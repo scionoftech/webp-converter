@@ -1,6 +1,6 @@
 
 //get module
-var webp=require('./webpconverter.js');
+var webp=require('./webpconverter_test.js');
 
 //pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp file type extension)
 webp.cwebp("nodejs_logo.jpg","output.webp","80",function(status)
