@@ -9,6 +9,7 @@ This module uses cwebp and dwebp precompiled executables of WebP Libraries for m
 
   ```js
 
+##How to use
 //get module
 var webp=require('webp-converter');
 
