@@ -7,9 +7,10 @@ A small [node.js](http://nodejs.org) library for converting any image to webp fi
 
 This module uses cwebp and dwebp precompiled executables of WebP Libraries for more info visit [WebP](https://developers.google.com/speed/webp/)
 
+##How to use
+
   ```js
 
-##How to use
 //get module
 var webp=require('webp-converter');
 
