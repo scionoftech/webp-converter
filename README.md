@@ -1,6 +1,6 @@
 [![webp-converter Logo](https://github.com/scionoftech/webp-converter/blob/Development/images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v1.1.7](https://www.npmjs.com/package/webp-converter)
+[webp-converter v1.1.8](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -31,7 +31,7 @@ webp.dwebp("nodejs_logo.webp","output.jpg",function(status)
 //or
 
 //pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp file type extension)
-webp.cwebp("/old/nodejs_logo.jpg","/new/output.webp","80",function(status)
+webp.cwebp("old/nodejs_logo.jpg","new/output.webp","80",function(status)
 	{
 		//if conversion successfull status will be 'converted successfully'
 		console.log(status);
