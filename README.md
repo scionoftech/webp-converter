@@ -38,7 +38,7 @@ webp.cwebp("old/nodejs_logo.jpg","new/output.webp","80",function(status)
 	});
 
 //pass input_image(.webp image) path ,output_image(.jpeg,.pnp .....)
-webp.dwebp("/old/nodejs_logo.webp","/new/output.jpg",function(status)
+webp.dwebp("old/nodejs_logo.webp","new/output.jpg",function(status)
 	{
 		//if conversion successfull status will be 'converted successfully'
 		console.log(status);
