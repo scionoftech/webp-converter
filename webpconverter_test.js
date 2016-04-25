@@ -19,8 +19,10 @@ var query='-q '+ qu +' '+ input_image +' -o '+ output_image;//command to convert
  			
  			callback(error);//return error
  		}
+ 		else{
+ 			callback('converted successfully');//return success message
+ 		}
  		
- 		callback('converted successfully');//return success message
  });
 };
 
@@ -40,7 +42,8 @@ var query=input_image +' -o '+ output_image;//command to convert image
  			
  			callback(error);//return error
  		}
- 		
- 		callback('converted successfully');//return success message
+ 		else{
+ 			callback('converted successfully');//return success message
+ 		}
  });
 };

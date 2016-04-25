@@ -102,7 +102,7 @@ OPTIONS
 
 BUGS
        Please    report     all     bugs     to     our     issue     tracker:
-       http://code.google.com/p/webp/issues
+       https://bugs.chromium.org/p/webp
        Patches  welcome!  See  this  page  to get started: http://www.webmpro‐
        ject.org/code/contribute/submitting-patches/
 
@@ -150,10 +150,11 @@ EXAMPLES
 
 
 AUTHORS
-       webpmux is written by the WebP team.
-       The latest source tree is available at http://www.webmproject.org/code
+       webpmux is a part of libwebp and was written by the WebP team.
+       The  latest  source  tree  is  available  at   https://chromium.google‐
+       source.com/webm/libwebp
 
-       This manual page was written by Vikas  Arora  <vikaas.arora@gmail.com>,
+       This  manual  page was written by Vikas Arora <vikaas.arora@gmail.com>,
        for the Debian project (and may be used by others).
 
 
@@ -164,4 +165,4 @@ SEE ALSO
 
 
 
-                                August 28, 2014                     WEBPMUX(1)
+                               December 11, 2015                    WEBPMUX(1)

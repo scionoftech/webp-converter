@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Wed Mar 11 15:18:13 2015 -->
+<!-- CreationDate: Fri Dec 18 00:19:41 2015 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -152,6 +152,15 @@ processing time at the expense of larger file size and lower
 compression quality.</p></td>
 </table>
 
+<p style="margin-left:11%;"><b>&minus;min_size</b></p>
+
+<p style="margin-left:22%;">Encode image to achieve
+smallest size. This disables key frame insertion and picks
+the dispose method resulting in smallest output for each
+frame. It uses lossless compression by default, but can be
+combined with &minus;q, &minus;m, &minus;lossy or
+&minus;mixed options.</p>
+
 <p style="margin-left:11%;"><b>&minus;kmin</b> <i>int</i>
 <b><br>
 &minus;kmax</b> <i>int</i></p>
@@ -162,9 +171,11 @@ decodable frames) in the output animation. The tool will
 insert some key frames into the output animation as needed
 so that this criteria is satisfied. <br>
 A &rsquo;kmin&rsquo; value of 0 will turn off insertion of
-key frames. Typical values are in the range 3 to 30. Default
-values are kmin = 9, kmax = 17 for lossless compression and
-kmin = 3, kmax = 5 for lossy compression. <br>
+key frames. A &rsquo;kmax&rsquo; value of 0 will result in
+all frames being key frames. Typical values are in the range
+3 to 30. Default values are kmin = 9, kmax = 17 for lossless
+compression and kmin = 3, kmax = 5 for lossy compression.
+<br>
 These two options are relevant only for animated images with
 large number of frames (&gt;50). <br>
 When lower values are used, more frames will be converted to
@@ -257,7 +268,7 @@ anything.</p> </td>
 
 <p style="margin-left:11%; margin-top: 1em">Please report
 all bugs to our issue tracker:
-http://code.google.com/p/webp/issues <br>
+https://bugs.chromium.org/p/webp <br>
 Patches welcome! See this page to get started:
 http://www.webmproject.org/code/contribute/submitting-patches/</p>
 
@@ -281,9 +292,9 @@ gif2webp &minus;q 70 &minus;o picture.webp &minus;&minus;
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>gif2webp</b>
-was written by the WebP team. <br>
+is a part of libwebp and was written by the WebP team. <br>
 The latest source tree is available at
-http://www.webmproject.org/code</p>
+https://chromium.googlesource.com/webm/libwebp</p>
 
 <p style="margin-left:11%; margin-top: 1em">This manual
 page was written by Urvang Joshi &lt;urvang@google.com&gt;,

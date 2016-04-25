@@ -4,18 +4,18 @@ var knowos=function()
 {
 if (process.platform === 'darwin') {
 
-    return 'node_modules/webp-converter/lib/libwebp_osx/bin/dwebp';//return osx library path
+    return __dirname + '/lib/libwebp_osx/bin/dwebp';//return osx library path
 
 }else if (process.platform === 'linux') {
 
-   return 'node_modules/webp-converter/lib/libwebp_linux/bin/dwebp';//return linux library path
+   return __dirname + '/lib/libwebp_linux/bin/dwebp';//return linux library path
 
 }else if (process.platform === 'win32') {
 
     if (process.arch === 'x64') {
-       return 'node_modules/webp-converter/lib/libwebp_win64/bin/dwebp.exe';//return windows 64bit library path
+       return __dirname + '/lib/libwebp_win64/bin/dwebp.exe';//return windows 64bit library path
     } else {
-        return 'node_modules/webp-converter/lib/libwebp_win32/bin/dwebp.exe';//return windows 32(X86)bit library path
+        return __dirname + '/lib/libwebp_win32/bin/dwebp.exe';//return windows 32(X86)bit library path
     }
 
 } else {

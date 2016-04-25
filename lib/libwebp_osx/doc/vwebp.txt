@@ -34,6 +34,11 @@ OPTIONS
               compression.  It helps by smoothing gradients and avoiding band
               ing artifacts. Default: 50.
 
+      noalphadither
+              By  default,  quantized  transparency planes are dithered during
+              decompression, to smooth the gradients. This flag  will  prevent
+              this dithering.
+
       mt    Use multithreading for decoding, if possible.
 
       info  Display image information on top of the decoded image.
@@ -59,7 +64,7 @@ OPTIONS
 
 BUGS
        Please     report     all     bugs     to     our     issue    tracker:
-       http://code.google.com/p/webp/issues
+       https://bugs.chromium.org/p/webp
        Patches welcome! See this  page  to  get  started:  http://www.webmpro
        ject.org/code/contribute/submittingpatches/
 
@@ -71,8 +76,9 @@ EXAMPLES
 
 
 AUTHORS
-       vwebp was written by the WebP team.
-       The latest source tree is available at http://www.webmproject.org/code
+       vwebp is a part of libwebp and was written by the WebP team.
+       The   latest  source  tree  is  available  at  https://chromium.google
+       source.com/webm/libwebp
 
        This manual page was written for the Debian project (and may be used by
        others).
@@ -85,4 +91,4 @@ SEE ALSO
 
 
 
-                                 July 23, 2014                        VWEBP(1)
+                               December 11, 2015                      VWEBP(1)

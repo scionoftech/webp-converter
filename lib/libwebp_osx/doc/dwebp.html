@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Wed Mar 11 15:18:13 2015 -->
+<!-- CreationDate: Fri Dec 18 00:19:41 2015 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -213,6 +213,13 @@ post-processing effect applied to chroma components in lossy
 compression. It helps by smoothing gradients and avoiding
 banding artifacts.</p>
 
+<p style="margin-left:11%;"><b>&minus;alpha_dither</b></p>
+
+<p style="margin-left:22%;">If the compressed file contains
+a transparency plane that was quantized during compression,
+this flag will allow dithering the reconstructed plane in
+order to generate smoother transparency gradients.</p>
+
 <p style="margin-left:11%;"><b>&minus;nodither</b></p>
 
 <p style="margin-left:22%;">Disable all dithering
@@ -249,18 +256,51 @@ snapped to even coordinates if needed. This option is meant
 to reduce the memory needed for cropping large images. Note:
 the cropping is applied <i>before</i> any scaling.</p>
 
-<p style="margin-left:11%;"><b>&minus;scale</b> <i>width
-height</i></p>
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;flip</b></p> </td>
+<td width="4%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Flip decoded image
+vertically (can be useful for OpenGL textures for
+instance).</p> </td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;resize</b>,
+<b>&minus;scale</b> <i>width height</i></p>
 
 <p style="margin-left:22%;">Rescale the decoded picture to
 dimension <b>width</b> x <b>height</b>. This option is
 mostly intended to reducing the memory needed to decode
 large images, when only a small version is needed
 (thumbnail, preview, etc.). Note: scaling is applied
-<i>after</i> cropping.</p>
+<i>after</i> cropping. If either (but not both) of the
+<b>width</b> or <b>height</b> parameters is 0, the value
+will be calculated preserving the aspect-ratio.</p>
 
 <table width="100%" border=0 rules="none" frame="void"
        cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;quiet</b></p> </td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Do not print
+anything.</p> </td>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="9%">
@@ -295,7 +335,7 @@ assembly optimizations.</p></td>
 
 <p style="margin-left:11%; margin-top: 1em">Please report
 all bugs to our issue tracker:
-http://code.google.com/p/webp/issues <br>
+https://bugs.chromium.org/p/webp <br>
 Patches welcome! See this page to get started:
 http://www.webmproject.org/code/contribute/submitting-patches/</p>
 
@@ -315,10 +355,10 @@ cat picture.webp | dwebp &minus;o &minus; &minus;&minus;
 <h2>AUTHORS</h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b>
-was written by the WebP team. <br>
+<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b> is
+a part of libwebp and was written by the WebP team. <br>
 The latest source tree is available at
-http://www.webmproject.org/code</p>
+https://chromium.googlesource.com/webm/libwebp</p>
 
 <p style="margin-left:11%; margin-top: 1em">This manual
 page was written by Pascal Massimino

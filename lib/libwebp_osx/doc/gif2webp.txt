@@ -52,17 +52,24 @@ OPTIONS
               processing time at the expense of larger  file  size  and  lower
               compression quality.
 
+      min_size
+              Encode  image  to achieve smallest size. This disables key frame
+              insertion and picks the dispose  method  resulting  in  smallest
+              output  for each frame. It uses lossless compression by default,
+              but can be combined with q, m, lossy or mixed options.
+
       kmin int
 
       kmax int
               Specify the minimum and maximum distance between consecutive key
               frames (independently decodable frames) in the output animation.
-              The  tool  will insert some key frames into the output animation
+              The tool will insert some key frames into the  output  animation
               as needed so that this criteria is satisfied.
-              A kmin value of 0 will turn off insertion of key frames.  Typ
-              ical  values are in the range 3 to 30. Default values are kmin =
-              9, kmax = 17 for lossless compression and kmin = 3, kmax = 5 for
-              lossy compression.
+              A  kmin  value  of  0 will turn off insertion of key frames. A
+              kmax value of 0 will result in all frames  being  key  frames.
+              Typical values are in the range 3 to 30. Default values are kmin
+              = 9, kmax = 17 for lossless compression and kmin = 3, kmax  =  5
+              for lossy compression.
               These  two  options  are  relevant only for animated images with
               large number of frames (>50).
               When lower values are used, more frames will be converted to key
@@ -101,7 +108,7 @@ OPTIONS
 
 BUGS
        Please     report     all     bugs     to     our     issue    tracker:
-       http://code.google.com/p/webp/issues
+       https://bugs.chromium.org/p/webp
        Patches welcome! See this  page  to  get  started:  http://www.webmpro
        ject.org/code/contribute/submittingpatches/
 
@@ -115,10 +122,11 @@ EXAMPLES
 
 
 AUTHORS
-       gif2webp was written by the WebP team.
-       The latest source tree is available at http://www.webmproject.org/code
+       gif2webp is a part of libwebp and was written by the WebP team.
+       The   latest  source  tree  is  available  at  https://chromium.google
+       source.com/webm/libwebp
 
-       This  manual  page was written by Urvang Joshi <urvang@google.com>, for
+       This manual page was written by Urvang Joshi  <urvang@google.com>,  for
        the Debian project (and may be used by others).
 
 
@@ -129,4 +137,4 @@ SEE ALSO
 
 
 
-                                 March 7, 2014                     GIF2WEBP(1)
+                               December 11, 2015                   GIF2WEBP(1)

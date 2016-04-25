@@ -64,25 +64,38 @@ OPTIONS
               compression.  It helps by smoothing gradients and avoiding band‐
               ing artifacts.
 
+       -alpha_dither
+              If  the  compressed  file contains a transparency plane that was
+              quantized during compression, this flag will allow dithering the
+              reconstructed  plane  in order to generate smoother transparency
+              gradients.
+
        -nodither
               Disable all dithering (default).
 
        -mt    Use multi-threading for decoding, if possible.
 
        -crop x_position y_position width height
-              Crop  the decoded picture to a rectangle with top-left corner at
-              coordinates (x_position, y_position) and size  width  x  height.
-              This  cropping  area  must  be fully contained within the source
-              rectangle.  The top-left corner will be snapped to even  coordi‐
-              nates  if  needed.   This  option  is meant to reduce the memory
+              Crop the decoded picture to a rectangle with top-left corner  at
+              coordinates  (x_position,  y_position)  and size width x height.
+              This cropping area must be fully  contained  within  the  source
+              rectangle.   The top-left corner will be snapped to even coordi‐
+              nates if needed.  This option is  meant  to  reduce  the  memory
               needed for cropping large images.  Note: the cropping is applied
               before any scaling.
 
-       -scale width height
+       -flip  Flip decoded image vertically (can be useful for OpenGL textures
+              for instance).
+
+       -resize, -scale width height
               Rescale  the  decoded  picture to dimension width x height. This
               option is mostly intended  to  reducing  the  memory  needed  to
               decode large images, when only a small version is needed (thumb‐
-              nail, preview, etc.).  Note: scaling is applied after cropping.
+              nail, preview, etc.). Note: scaling is applied  after  cropping.
+              If either (but not both) of the width or height parameters is 0,
+              the value will be calculated preserving the aspect-ratio.
+
+       -quiet Do not print anything.
 
        -v     Print extra information (decoding time in particular).
 
@@ -91,7 +104,7 @@ OPTIONS
 
 BUGS
        Please    report     all     bugs     to     our     issue     tracker:
-       http://code.google.com/p/webp/issues
+       https://bugs.chromium.org/p/webp
        Patches  welcome!  See  this  page  to get started: http://www.webmpro‐
        ject.org/code/contribute/submitting-patches/
 
@@ -104,10 +117,11 @@ EXAMPLES
 
 
 AUTHORS
-       dwebp was written by the WebP team.
-       The latest source tree is available at http://www.webmproject.org/code
+       dwebp is a part of libwebp and was written by the WebP team.
+       The  latest  source  tree  is  available  at   https://chromium.google‐
+       source.com/webm/libwebp
 
-       This  manual  page  was  written  by  Pascal   Massimino   <pascal.mas‐
+       This   manual   page  was  written  by  Pascal  Massimino  <pascal.mas‐
        simino@gmail.com>, for the Debian project (and may be used by others).
 
 
@@ -124,4 +138,4 @@ SEE ALSO
 
 
 
-                                 July 22, 2014                        DWEBP(1)
+                               December 11, 2015                      DWEBP(1)
