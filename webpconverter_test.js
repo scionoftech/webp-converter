@@ -17,10 +17,9 @@ var query = op +' '+ input_image +' -o '+ output_image;//command to convert imag
  exec(enwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			
- 			callback(error);//return error
+ 			callback("101");//return error code
  		}else {
-  			callback('converted successfully');//return success message
+  			callback("100");//return success code
  	      }
  });
 };
@@ -39,11 +38,10 @@ var query = input_image + op + output_image;//command to convert image
  exec(dewebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			
- 			callback(error);//return error
+ 			callback("101");//return error code
  		}else {
-  			callback('converted successfully');//return success message
- 		}
+  			callback("100");//return success code
+ 	      }
  });
 };
 
@@ -61,10 +59,9 @@ var query = op +' '+ input_image +' -o '+ output_image;//command to convert imag
  exec(gifwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			
- 			callback(error);//return error
+ 			callback("101");//return error code
  		}else {
-  			callback('converted successfully');//return success message
+  			callback("100");//return success code
  	      }
  });
 };

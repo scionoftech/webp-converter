@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.1.1](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.1.2](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -25,14 +25,16 @@ var webp=require('webp-converter');
 //pass option(read  documentation for options)
 webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",function(status)
 	{
-		//if conversion successfull status will be 'converted successfully'
+		//if conversion successfull status will be '100'
+		//if conversion unsuccessfull status will be '101'
 		console.log(status);
 	});
 
 //pass input_image(.webp image) path ,output_image(.jpeg,.pnp .....)
 webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg",function(status)
 	{
-		//if conversion successfull status will be 'converted successfully'
+		//if conversion successfull status will be '100'
+		//if conversion unsuccessfull status will be '101'
 		console.log(status);
 	});
 
@@ -40,7 +42,8 @@ webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg",function(status)
 //pass option(read  documentation for options)
 webp.gwebp("nodejs_logo.gif","nodejs_logo.webp","-q 80",function(status)
 	{
-		//if conversion successfull status will be 'converted successfully'
+		//if conversion successfull status will be '100'
+		//if conversion unsuccessfull status will be '101'
 		console.log(status);
 	});
 
