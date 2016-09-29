@@ -18,8 +18,10 @@ var query = op +' '+ input_image +' -o '+ output_image;//command to convert imag
  	{ 
  		if(error){
  			callback("101");//return error code
+			callback(error);
  		}else {
   			callback("100");//return success code
+			callback("Converted Successfully");
  	      }
  });
 };
@@ -32,15 +34,17 @@ var sou=input_image;//input image .webp
 var des=output_image;//output image(.jpeg, .pnp ....)
 var op=option;//options
 
-var query = input_image + op + output_image;//command to convert image 
+var query = input_image + ' ' + op + ' ' + output_image;//command to convert image 
 
 //dewebp() return which platform webp library should be used for conversion
  exec(dewebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
  			callback("101");//return error code
+			callback(error);
  		}else {
   			callback("100");//return success code
+			callback("Converted Successfully");
  	   }
  });
 };
@@ -60,8 +64,10 @@ var query = op +' '+ input_image +' -o '+ output_image;//command to convert imag
  	{ 
  		if(error){
  			callback("101");//return error code
+			callback(error);
  		}else {
   			callback("100");//return success code
+			callback("Converted Successfully");
  	      }
  });
 };
