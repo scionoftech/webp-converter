@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.1.3](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.1.4](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
