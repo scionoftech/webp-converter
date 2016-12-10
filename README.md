@@ -21,7 +21,7 @@ For converting gif image to webp please read this documentation [gif2webp Conver
 //get module
 var webp=require('webp-converter');
 
-//pass input_image(.jpeg,.pnp ....) path ,output_image(give path where to save and image file name with .webp extension)
+//pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp extension)
 //pass option(read  documentation for options)
 webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",function(status)
 	{
