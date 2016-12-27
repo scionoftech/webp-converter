@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Fri Dec 18 00:19:41 2015 -->
+<!-- CreationDate: Thu Dec 15 16:17:40 2016 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -252,17 +252,21 @@ These options are only effective when doing lossy encoding
 &minus;size</b> <i>int</i></p>
 
 <p style="margin-left:22%;">Specify a target size (in
-bytes) to try and reach for the compressed output.
-Compressor will make several pass of partial encoding in
-order to get as close as possible to this target.</p>
+bytes) to try and reach for the compressed output. The
+compressor will make several passes of partial encoding in
+order to get as close as possible to this target. If both
+<b>&minus;size</b> and <b>&minus;psnr</b> are used,
+<b>&minus;size</b> value will prevail.</p>
 
 <p style="margin-left:11%;"><b>&minus;psnr</b>
 <i>float</i></p>
 
 <p style="margin-left:22%;">Specify a target PSNR (in dB)
-to try and reach for the compressed output. Compressor will
-make several pass of partial encoding in order to get as
-close as possible to this target.</p>
+to try and reach for the compressed output. The compressor
+will make several passes of partial encoding in order to get
+as close as possible to this target. If both
+<b>&minus;size</b> and <b>&minus;psnr</b> are used,
+<b>&minus;size</b> value will prevail.</p>
 
 <p style="margin-left:11%;"><b>&minus;pass</b>
 <i>int</i></p>
@@ -270,7 +274,10 @@ close as possible to this target.</p>
 <p style="margin-left:22%;">Set a maximum number of passes
 to use during the dichotomy used by options
 <b>&minus;size</b> or <b>&minus;psnr</b>. Maximum value is
-10, default is 1.</p>
+10, default is 1. If options <b>&minus;size</b> or
+<b>&minus;psnr</b> were used, but <b>&minus;pass</b>
+wasn&rsquo;t specified, a default value of &rsquo;6&rsquo;
+passes will be used.</p>
 
 <table width="100%" border=0 rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -353,7 +360,7 @@ algorithms used to decide which area of the picture should
 use relatively less bits, and where else to better transfer
 these bits. The possible range goes from 0 (algorithm is
 off) to 100 (the maximal effect). The default value is
-80.</p>
+50.</p>
 
 <p style="margin-left:11%;"><b>&minus;segments</b>
 <i>int</i></p>
@@ -464,7 +471,7 @@ anything.</p> </td>
 
 <p style="margin-top: 1em" valign="top">Only print brief
 information (output file size and PSNR) for testing
-purpose.</p> </td>
+purposes.</p> </td>
 </table>
 
 <p style="margin-left:11%;"><b>&minus;map</b>
@@ -588,7 +595,7 @@ assembly optimizations.</p></td>
 
 
 <p style="margin-left:11%; margin-top: 1em">Please report
-all bugs to our issue tracker:
+all bugs to the issue tracker:
 https://bugs.chromium.org/p/webp <br>
 Patches welcome! See this page to get started:
 http://www.webmproject.org/code/contribute/submitting&minus;patches/</p>

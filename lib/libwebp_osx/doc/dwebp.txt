@@ -103,7 +103,7 @@ OPTIONS
 
 
 BUGS
-       Please    report     all     bugs     to     our     issue     tracker:
+       Please    report     all     bugs     to     the     issue     tracker:
        https://bugs.chromium.org/p/webp
        Patches  welcome!  See  this  page  to get started: http://www.webmpro
        ject.org/code/contribute/submittingpatches/
@@ -138,4 +138,4 @@ SEE ALSO
 
 
 
-                               December 11, 2015                      DWEBP(1)
+                                 June 23, 2016                        DWEBP(1)

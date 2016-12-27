@@ -123,17 +123,21 @@ OPTIONS
 
       size int
               Specify a target size (in bytes) to try and reach for  the  com
-              pressed  output.   Compressor  will make several pass of partial
-              encoding in order to get as close as possible to this target.
+              pressed output.  The compressor will make several passes of par
+              tial encoding in order to get as close as possible to this  tar
+              get. If bothsize andpsnr are used,size value will prevail.
 
       psnr float
               Specify a target PSNR (in dB) to try  and  reach  for  the  com
-              pressed  output.   Compressor  will make several pass of partial
-              encoding in order to get as close as possible to this target.
+              pressed output.  The compressor will make several passes of par
+              tial encoding in order to get as close as possible to this  tar
+              get. If bothsize andpsnr are used,size value will prevail.
 
       pass int
               Set a maximum number of passes to use during the dichotomy  used
-              by optionssize orpsnr. Maximum value is 10, default is 1.
+              by  options size  orpsnr. Maximum value is 10, default is 1.
+              If optionssize orpsnr were used, butpass wasnt specified,
+              a default value of 6 passes will be used.
 
       af    Turns  autofilter on. This algorithm will spend additional time
               optimizing the filtering strength to reach a wellbalanced qual
@@ -174,7 +178,7 @@ OPTIONS
               of builtin algorithms used to decide which area of the  picture
               should use relatively less bits, and where else to better trans
               fer these bits. The possible range goes  from  0  (algorithm  is
-              off) to 100 (the maximal effect). The default value is 80.
+              off) to 100 (the maximal effect). The default value is 50.
 
       segments int
               Change  the  number of partitions to use during the segmentation
@@ -227,7 +231,7 @@ OPTIONS
       quiet Do not print anything.
 
       short Only  print  brief  information  (output file size and PSNR) for
-              testing purpose.
+              testing purposes.
 
       map int
               Output additional ASCIImap of  encoding  information.  Possible
@@ -290,7 +294,7 @@ OPTIONS
 
 
 BUGS
-       Please    report     all     bugs     to     our     issue     tracker:
+       Please    report     all     bugs     to     the     issue     tracker:
        https://bugs.chromium.org/p/webp
        Patches  welcome!  See  this  page  to get started: http://www.webmpro
        ject.org/code/contribute/submittingpatches/
@@ -319,4 +323,4 @@ SEE ALSO
 
 
 
-                               December 14, 2015                      CWEBP(1)
+                              September 02, 2016                      CWEBP(1)

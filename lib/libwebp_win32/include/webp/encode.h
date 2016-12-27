@@ -134,8 +134,8 @@ struct WebPConfig {
   int thread_level;       // If non-zero, try and use multi-threaded encoding.
   int low_memory;         // If set, reduce memory usage (but increase CPU use).
 
-  int near_lossless;      // Near lossless encoding [0 = off(default) .. 100].
-                          // This feature is experimental.
+  int near_lossless;      // Near lossless encoding [0 = max loss .. 100 = off
+                          // (default)].
   int exact;              // if non-zero, preserve the exact RGB values under
                           // transparent area. Otherwise, discard this invisible
                           // RGB information for better compression. The default
@@ -481,10 +481,10 @@ WEBP_EXTERN(int) WebPPictureARGBToYUVADithered(
 WEBP_EXTERN(int) WebPPictureSmartARGBToYUVA(WebPPicture* picture);
 
 // Converts picture->yuv to picture->argb and sets picture->use_argb to true.
-// The input format must be YUV_420 or YUV_420A.
-// Note that the use of this method is discouraged if one has access to the
-// raw ARGB samples, since using YUV420 is comparatively lossy. Also, the
-// conversion from YUV420 to ARGB incurs a small loss too.
+// The input format must be YUV_420 or YUV_420A. The conversion from YUV420 to
+// ARGB incurs a small loss too.
+// Note that the use of this colorspace is discouraged if one has access to the
+// raw ARGB samples, since using YUV420 is comparatively lossy.
 // Returns false in case of error.
 WEBP_EXTERN(int) WebPPictureYUVAToARGB(WebPPicture* picture);
 
