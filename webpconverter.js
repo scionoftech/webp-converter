@@ -1,8 +1,8 @@
 var exec = require('child_process').execFile;//get child_process module
-var enwebp=require('./cwebp_test.js');//get cwebp module(converts other image format to webp)
-var dewebp=require('./dwebp_test.js');//get dwebp module(converts webp format to other image)
-var gifwebp=require('./gwebp_test.js');//get gif2webp module(convert git image to webp)
-var webpmux=require('./webpmux_test.js');//get webpmux module(convert non animated webp images to animated webp) 
+var enwebp=require('./cwebp.js');//get cwebp module(converts other image format to webp)
+var dewebp=require('./dwebp.js');//get dwebp module(converts webp format to other image)
+var gifwebp=require('./gwebp.js');//get gif2webp module(convert git image to webp)
+var webpmux=require('./webpmux.js');//get webpmux module(convert non animated webp images to animated webp) 
 
 
 /******************************************************* cwebp *****************************************************/
