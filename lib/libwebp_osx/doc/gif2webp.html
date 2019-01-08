@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Thu Dec 15 16:17:41 2016 -->
+<!-- CreationDate: Thu Nov  8 22:59:33 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -71,6 +71,16 @@ WebP file. If omitted, <b>gif2webp</b> will perform
 conversion but only report statistics. Using
 &quot;&minus;&quot; as output name will direct output to
 &rsquo;stdout&rsquo;.</p>
+
+<p style="margin-left:11%;"><b>&minus;&minus;</b>
+<i>string</i></p>
+
+<p style="margin-left:22%;">Explicitly specify the input
+file. This option is useful if the input file starts with an
+&rsquo;&minus;&rsquo; for instance. This option must appear
+<b>last</b>. Any other options afterward will be ignored. If
+the input file is &quot;&minus;&quot;, the data will be read
+from <i>stdin</i> instead of a file.</p>
 
 <p style="margin-left:11%;"><b>&minus;h,
 &minus;help</b></p>
@@ -170,12 +180,13 @@ distance between consecutive key frames (independently
 decodable frames) in the output animation. The tool will
 insert some key frames into the output animation as needed
 so that this criteria is satisfied. <br>
-A &rsquo;kmin&rsquo; value of 0 will turn off insertion of
-key frames. A &rsquo;kmax&rsquo; value of 0 will result in
-all frames being key frames. Typical values are in the range
-3 to 30. Default values are kmin = 9, kmax = 17 for lossless
-compression and kmin = 3, kmax = 5 for lossy compression.
-<br>
+A &rsquo;kmax&rsquo; value of 0 will turn off insertion of
+key frames. A &rsquo;kmax&rsquo; value of 1 will result in
+all frames being key frames. &rsquo;kmin&rsquo; value is not
+taken into account in both these special cases. Typical
+values are in the range 3 to 30. Default values are kmin =
+9, kmax = 17 for lossless compression and kmin = 3, kmax = 5
+for lossy compression. <br>
 These two options are relevant only for animated images with
 large number of frames (&gt;50). <br>
 When lower values are used, more frames will be converted to
@@ -232,8 +243,18 @@ Typical values are usually in the range of 20 to 50.</p></td>
 
 
 <p style="margin-top: 1em" valign="top">Use multi-threading
-for encoding, if possible. This option is only effective
-when using lossy compression.</p></td>
+for encoding, if possible.</p></td>
+</table>
+
+
+<p style="margin-left:11%;"><b>&minus;loop_compatibility</b></p>
+
+<p style="margin-left:22%;">If enabled, handle the loop
+information in a compatible fashion for Chrome version prior
+to M62 (inclusive) and Firefox.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="9%">
@@ -242,11 +263,13 @@ when using lossy compression.</p></td>
 
 <p style="margin-top: 1em" valign="top"><b>&minus;v</b></p> </td>
 <td width="2%"></td>
-<td width="78%">
+<td width="36%">
 
 
 <p style="margin-top: 1em" valign="top">Print extra
 information.</p> </td>
+<td width="42%">
+</td>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="9%">
@@ -255,11 +278,13 @@ information.</p> </td>
 
 <p style="margin-top: 1em" valign="top"><b>&minus;quiet</b></p> </td>
 <td width="2%"></td>
-<td width="78%">
+<td width="36%">
 
 
 <p style="margin-top: 1em" valign="top">Do not print
 anything.</p> </td>
+<td width="42%">
+</td>
 </table>
 
 <a name="BUGS"></a>
@@ -284,7 +309,9 @@ picture_lossy.webp <br>
 gif2webp &minus;lossy &minus;f 50 picture.gif &minus;o
 picture.webp <br>
 gif2webp &minus;q 70 &minus;o picture.webp &minus;&minus;
-&minus;&minus;&minus;picture.gif</p>
+&minus;&minus;&minus;picture.gif <br>
+cat picture.gif | gif2webp &minus;o &minus; &minus;&minus;
+&minus; &gt; output.webp</p>
 
 <a name="AUTHORS"></a>
 <h2>AUTHORS</h2>

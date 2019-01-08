@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Thu Dec 15 16:10:53 2016 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Fri Nov  9 06:58:26 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">dwebp &minus;
+<p style="margin-left:11%; margin-top: 1em">dwebp -
 decompress a WebP file to an image file</p>
 
 <h2>SYNOPSIS
@@ -75,7 +75,7 @@ options are:</p>
 <td width="3%">
 
 
-<p><b>&minus;h</b></p></td>
+<p><b>-h</b></p></td>
 <td width="8%"></td>
 <td width="30%">
 
@@ -85,27 +85,25 @@ options are:</p>
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;version</b></p>
+<p style="margin-left:11%;"><b>-version</b></p>
 
 <p style="margin-left:22%;">Print the version number (as
 major.minor.revision) and exit.</p>
 
-<p style="margin-left:11%;"><b>&minus;o</b>
-<i>string</i></p>
+<p style="margin-left:11%;"><b>-o</b> <i>string</i></p>
 
 <p style="margin-left:22%;">Specify the name of the output
 file (as PNG format by default). Using &quot;-&quot; as
 output name will direct output to &rsquo;stdout&rsquo;.</p>
 
-<p style="margin-left:11%;"><b>&minus;&minus;</b>
-<i>string</i></p>
+<p style="margin-left:11%;"><b>--</b> <i>string</i></p>
 
 <p style="margin-left:22%;">Explicitly specify the input
 file. This option is useful if the input file starts with an
-&rsquo;&minus;&rsquo; for instance. This option must appear
+&rsquo;-&rsquo; for instance. This option must appear
 <b>last</b>. Any other options afterward will be ignored. If
-the input file is &quot;&minus;&quot;, the data will be read
-from <i>stdin</i> instead of a file.</p>
+the input file is &quot;-&quot;, the data will be read from
+<i>stdin</i> instead of a file.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -114,7 +112,7 @@ from <i>stdin</i> instead of a file.</p>
 <td width="7%">
 
 
-<p><b>&minus;bmp</b></p></td>
+<p><b>-bmp</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -125,7 +123,7 @@ from <i>stdin</i> instead of a file.</p>
 <td width="7%">
 
 
-<p><b>&minus;tiff</b></p></td>
+<p><b>-tiff</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -136,7 +134,7 @@ from <i>stdin</i> instead of a file.</p>
 <td width="7%">
 
 
-<p><b>&minus;pam</b></p></td>
+<p><b>-pam</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -147,7 +145,7 @@ from <i>stdin</i> instead of a file.</p>
 <td width="7%">
 
 
-<p><b>&minus;ppm</b></p></td>
+<p><b>-ppm</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -158,7 +156,7 @@ from <i>stdin</i> instead of a file.</p>
 <td width="7%">
 
 
-<p><b>&minus;pgm</b></p></td>
+<p><b>-pgm</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -172,7 +170,7 @@ purposes.</p> </td></tr>
 <td width="7%">
 
 
-<p><b>&minus;yuv</b></p></td>
+<p><b>-yuv</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -183,20 +181,20 @@ sequentially as individual planes. This option is mainly for
 verification and debugging purposes.</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;nofancy</b></p>
+<p style="margin-left:11%;"><b>-nofancy</b></p>
 
 <p style="margin-left:22%;">Don&rsquo;t use the fancy
 upscaler for YUV420. This may lead to jaggy edges
 (especially the red ones), but should be faster.</p>
 
-<p style="margin-left:11%;"><b>&minus;nofilter</b></p>
+<p style="margin-left:11%;"><b>-nofilter</b></p>
 
 <p style="margin-left:22%;">Don&rsquo;t use the in-loop
 filtering process even if it is required by the bitstream.
 This may produce visible blocks on the non-compliant output,
 but it will make the decoding faster.</p>
 
-<p style="margin-left:11%;"><b>&minus;dither</b>
+<p style="margin-left:11%;"><b>-dither</b>
 <i>strength</i></p>
 
 <p style="margin-left:22%;">Specify a dithering
@@ -205,14 +203,14 @@ post-processing effect applied to chroma components in lossy
 compression. It helps by smoothing gradients and avoiding
 banding artifacts.</p>
 
-<p style="margin-left:11%;"><b>&minus;alpha_dither</b></p>
+<p style="margin-left:11%;"><b>-alpha_dither</b></p>
 
 <p style="margin-left:22%;">If the compressed file contains
 a transparency plane that was quantized during compression,
 this flag will allow dithering the reconstructed plane in
 order to generate smoother transparency gradients.</p>
 
-<p style="margin-left:11%;"><b>&minus;nodither</b></p>
+<p style="margin-left:11%;"><b>-nodither</b></p>
 
 <p style="margin-left:22%;">Disable all dithering
 (default).</p>
@@ -224,7 +222,7 @@ order to generate smoother transparency gradients.</p>
 <td width="4%">
 
 
-<p><b>&minus;mt</b></p></td>
+<p><b>-mt</b></p></td>
 <td width="7%"></td>
 <td width="70%">
 
@@ -234,8 +232,8 @@ order to generate smoother transparency gradients.</p>
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;crop</b>
-<i>x_position y_position width height</i></p>
+<p style="margin-left:11%;"><b>-crop</b> <i>x_position
+y_position width height</i></p>
 
 <p style="margin-left:22%;">Crop the decoded picture to a
 rectangle with top-left corner at coordinates
@@ -253,7 +251,7 @@ the cropping is applied <i>before</i> any scaling.</p>
 <td width="7%">
 
 
-<p><b>&minus;flip</b></p></td>
+<p><b>-flip</b></p></td>
 <td width="4%"></td>
 <td width="78%">
 
@@ -262,8 +260,8 @@ the cropping is applied <i>before</i> any scaling.</p>
 textures for instance).</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;resize</b>,
-<b>&minus;scale</b> <i>width height</i></p>
+<p style="margin-left:11%;"><b>-resize</b>, <b>-scale</b>
+<i>width height</i></p>
 
 <p style="margin-left:22%;">Rescale the decoded picture to
 dimension <b>width</b> x <b>height</b>. This option is
@@ -281,7 +279,7 @@ will be calculated preserving the aspect-ratio.</p>
 <td width="9%">
 
 
-<p><b>&minus;quiet</b></p></td>
+<p><b>-quiet</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -292,7 +290,7 @@ will be calculated preserving the aspect-ratio.</p>
 <td width="9%">
 
 
-<p><b>&minus;v</b></p></td>
+<p><b>-v</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -304,7 +302,7 @@ particular).</p> </td></tr>
 <td width="9%">
 
 
-<p><b>&minus;noasm</b></p></td>
+<p><b>-noasm</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -329,12 +327,10 @@ http://www.webmproject.org/code/contribute/submitting-patches/</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">dwebp
-picture.webp &minus;o output.png <br>
-dwebp picture.webp &minus;ppm &minus;o output.ppm <br>
-dwebp &minus;o output.ppm &minus;&minus;
-&minus;&minus;&minus;picture.webp <br>
-cat picture.webp | dwebp &minus;o &minus; &minus;&minus;
-&minus; &gt; output.ppm</p>
+picture.webp -o output.png <br>
+dwebp picture.webp -ppm -o output.ppm <br>
+dwebp -o output.ppm -- ---picture.webp <br>
+cat picture.webp | dwebp -o - -- - &gt; output.ppm</p>
 
 <h2>AUTHORS
 <a name="AUTHORS"></a>

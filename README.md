@@ -1,11 +1,11 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.1.6](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.2.0](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
 
-This module uses cwebp and dwebp precompiled executables of WebP Libraries for more info visit [WebP](https://developers.google.com/speed/webp)
+This library uses precompiled executables of WebP for more info visit [WebP](https://developers.google.com/speed/webp)
 
 For converting other image formats to webp, please read this documentation  [cwebp Encoder](https://developers.google.com/speed/webp/docs/cwebp)
 
@@ -14,6 +14,11 @@ For converting webp image to other image format, please read this documentation 
 For converting gif image to webp, please read this documentation [gif2webp Converter](https://developers.google.com/speed/webp/docs/gif2webp)
 
 For creating animated webp image using webp images, please read this documentation [webpmux Muxer](https://developers.google.com/speed/webp/docs/webpmux)
+
+
+##What's New 
+* Precompiled executables of WebP(v1.0.1) are added
+* Status issue resolved
 
 
 # How to use
@@ -31,11 +36,11 @@ var webp=require('webp-converter');
 
 //cwebp(input,output,option,result_callback)
 
-webp.cwebp("input.jpg","output.webp","-q 80",function(status)
+webp.cwebp("input.jpg","output.webp","-q 80",function(status,error)
 	{
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});
 
 
@@ -53,11 +58,11 @@ var webp=require('webp-converter');
 
 //dwebp(input,output,option,result_callback)
 
-webp.dwebp("input.webp","output.jpg","-o",function(status)
+webp.dwebp("input.webp","output.jpg","-o",function(status,error)
 	{
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});
 
 ```
@@ -75,11 +80,11 @@ var webp=require('webp-converter');
 
 //gwebp(input,output,option,result_callback)
 
-webp.gwebp("input.gif","output.webp","-q 80",function(status)
+webp.gwebp("input.gif","output.webp","-q 80",function(status,error)
 	{
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});
 
 
@@ -101,11 +106,11 @@ var webp=require('webp-converter');
 
 //webpmux_add(input,output,option_profile,set_option,result_callback)
 
-webp.webpmux_add("input.webp","output.webp","image_profile.icc","icc",function(status){
+webp.webpmux_add("input.webp","output.webp","image_profile.icc","icc",function(status,error){
 
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 
 });
 
@@ -126,11 +131,11 @@ var webp=require('webp-converter');
 
 //webpmux_extract(input,output,option,result_callback)
 
-webp.webpmux_extract("input.webp","output.icc","icc",function(status){
+webp.webpmux_extract("input.webp","output.icc","icc",function(status,error){
 
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 
 });
 
@@ -151,11 +156,11 @@ var webp=require('webp-converter');
 
 //webpmux_strip(input,output,option,result_callback)
 
-webp.webpmux_strip("input.webp","ouput.webp","icc",function(status){
+webp.webpmux_strip("input.webp","ouput.webp","icc",function(status,error){
 
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 
 });
 
@@ -199,17 +204,17 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 
 var input=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100+50+50","./frames/tmp-2.webp +100+50+50+1+b"];
 
-webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255",function(status)
+webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255",function(status,error)
 	{
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});
 
 
 ```
 
-##Get the a frame from an animated WebP file
+##Get a frame from an animated WebP file
 
   ```js
 
@@ -219,11 +224,11 @@ var webp=require('webp-converter');
 
 //webpmux_getframe(input,ouput,frame number,result_callback)
 
-webp.webpmux_getframe("anim_container.webp","output.webp","2",function(status){
+webp.webpmux_getframe("anim_container.webp","output.webp","2",function(status,error){
 
-		//if exicuted successfully status will be '100'
-		//if exicuted unsuccessfully status will be '101'
-		console.log(status);
+		 //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 
 });
 

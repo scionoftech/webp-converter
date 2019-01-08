@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Thu Dec 15 16:17:41 2016 -->
+<!-- CreationDate: Thu Nov  8 22:59:34 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,10 +58,13 @@ webpmux &minus;frame</b> <i>FRAME_OPTIONS</i> <b>[
 <p style="margin-left:23%;"><b>[ &minus;bgcolor</b>
 <i>BACKGROUND_COLOR</i> <b>] &minus;o</b> <i>OUTPUT</i></p>
 
-<p style="margin-left:11%;"><b>webpmux &minus;info</b>
-<i>INPUT</i> <b><br>
+<p style="margin-left:11%;"><b>webpmux &minus;duration</b>
+<i>DURATION OPTIONS</i> <b>[ &minus;duration ... ]</b>
+<i>INPUT</i> <b>&minus;o</b> <i>OUTPUT</i> <b><br>
+webpmux &minus;info</b> <i>INPUT</i> <b><br>
 webpmux [&minus;h|&minus;help] <br>
-webpmux &minus;version</b></p>
+webpmux &minus;version <br>
+webpmux argument_file_name</b></p>
 
 <a name="DESCRIPTION"></a>
 <h2>DESCRIPTION</h2>
@@ -73,7 +76,11 @@ page documents the <b>webpmux</b> command.</p>
 <p style="margin-left:11%; margin-top: 1em"><b>webpmux</b>
 can be used to create/extract from animated WebP files, as
 well as to add/extract/strip XMP/EXIF metadata and ICC
-profile.</p>
+profile. If a single file name (not starting with the
+character &rsquo;&minus;&rsquo;) is supplied as the
+argument, the command line arguments are actually tokenized
+from this file. This allows for easy scripting or using
+large number of arguments.</p>
 
 <a name="OPTIONS"></a>
 <h2>OPTIONS</h2>
@@ -204,6 +211,46 @@ metadata.</p> </td>
 <td width="48%">
 </td>
 </table>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>DURATION_OPTIONS
+(&minus;duration)</b> <br>
+Amend the duration of a specific interval of frames. This
+option is only effective on animated WebP and has no effect
+on a single-frame file. <i><br>
+duration[,start[,end]]</i></p>
+
+<p style="margin-left:22%;">Where: <b><br>
+duration</b> is the duration for the interval in
+milliseconds (mandatory). Must be non-negative. <b><br>
+start</b> is the starting frame index of the interval
+(optional). <b><br>
+end</b> is the ending frame index (inclusive) of the
+interval (optional).</p>
+
+<p style="margin-left:11%;">The three typical usages of
+this option are:</p>
+
+<p style="margin-left:22%;"><b>-duration d</b> <br>
+set the duration to &rsquo;d&rsquo; for the whole animation.
+<b><br>
+-duration d,f</b> <br>
+set the duration of frame &rsquo;f&rsquo; to
+&rsquo;d&rsquo;. <b><br>
+-duration d,start,end</b> <br>
+set the duration to &rsquo;d&rsquo; for the whole
+[start,end] interval.</p>
+
+<p style="margin-left:22%; margin-top: 1em">Note that the
+frames outside of the [start, end] interval will <br>
+remain untouched. <br>
+The &rsquo;end&rsquo; value &rsquo;0&rsquo; has the special
+meaning &rsquo;last frame of the animation&rsquo;.</p>
+
+<p style="margin-left:11%;"><i>Reminder:</i></p>
+
+<p style="margin-left:22%;">frame indexing starts at
+&rsquo;1&rsquo;.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>FRAME_OPTIONS

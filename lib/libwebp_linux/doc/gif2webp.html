@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Thu Dec 15 16:10:53 2016 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Fri Nov  9 06:58:26 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,8 +37,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">gif2webp
-&minus; Convert a GIF image to WebP</p>
+<p style="margin-left:11%; margin-top: 1em">gif2webp -
+Convert a GIF image to WebP</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -47,7 +47,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>gif2webp</b>
-[<i>options</i>] <i>input_file.gif &minus;o
+[<i>options</i>] <i>input_file.gif -o
 output_file.webp</i></p>
 
 <h2>DESCRIPTION
@@ -69,20 +69,28 @@ converts a GIF image to a WebP image.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The basic
 options are: <b><br>
-&minus;o</b> <i>string</i></p>
+-o</b> <i>string</i></p>
 
 <p style="margin-left:22%;">Specify the name of the output
 WebP file. If omitted, <b>gif2webp</b> will perform
-conversion but only report statistics. Using
-&quot;&minus;&quot; as output name will direct output to
+conversion but only report statistics. Using &quot;-&quot;
+as output name will direct output to
 &rsquo;stdout&rsquo;.</p>
 
-<p style="margin-left:11%;"><b>&minus;h,
-&minus;help</b></p>
+<p style="margin-left:11%;"><b>--</b> <i>string</i></p>
+
+<p style="margin-left:22%;">Explicitly specify the input
+file. This option is useful if the input file starts with an
+&rsquo;-&rsquo; for instance. This option must appear
+<b>last</b>. Any other options afterward will be ignored. If
+the input file is &quot;-&quot;, the data will be read from
+<i>stdin</i> instead of a file.</p>
+
+<p style="margin-left:11%;"><b>-h, -help</b></p>
 
 <p style="margin-left:22%;">Usage information.</p>
 
-<p style="margin-left:11%;"><b>&minus;version</b></p>
+<p style="margin-left:11%;"><b>-version</b></p>
 
 <p style="margin-left:22%;">Print the version number (as
 major.minor.revision) and exit.</p>
@@ -94,7 +102,7 @@ major.minor.revision) and exit.</p>
 <td width="9%">
 
 
-<p><b>&minus;lossy</b></p></td>
+<p><b>-lossy</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -105,7 +113,7 @@ major.minor.revision) and exit.</p>
 <td width="9%">
 
 
-<p><b>&minus;mixed</b></p></td>
+<p><b>-mixed</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -115,8 +123,7 @@ image by picking either lossy or lossless compression for
 each frame heuristically.</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;q</b>
-<i>float</i></p>
+<p style="margin-left:11%;"><b>-q</b> <i>float</i></p>
 
 <p style="margin-left:22%;">Specify the compression factor
 for RGB channels between 0 and 100. The default is 75. <br>
@@ -124,7 +131,7 @@ In case of lossless compression (default), a small factor
 enables faster compression speed, but produces a larger
 file. Maximum compression is achieved by using a value of
 100. <br>
-In case of lossy compression (specified by the &minus;lossy
+In case of lossy compression (specified by the -lossy
 option), a small factor produces a smaller file with lower
 quality. Best quality is achieved by using a value of
 100.</p>
@@ -136,7 +143,7 @@ quality. Best quality is achieved by using a value of
 <td width="9%">
 
 
-<p><b>&minus;m</b> <i>int</i></p></td>
+<p><b>-m</b> <i>int</i></p></td>
 <td width="2%"></td>
 <td width="78%">
 
@@ -151,30 +158,29 @@ can result is faster processing time at the expense of
 larger file size and lower compression quality.</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>&minus;min_size</b></p>
+<p style="margin-left:11%;"><b>-min_size</b></p>
 
 <p style="margin-left:22%;">Encode image to achieve
 smallest size. This disables key frame insertion and picks
 the dispose method resulting in smallest output for each
 frame. It uses lossless compression by default, but can be
-combined with &minus;q, &minus;m, &minus;lossy or
-&minus;mixed options.</p>
+combined with -q, -m, -lossy or -mixed options.</p>
 
-<p style="margin-left:11%;"><b>&minus;kmin</b> <i>int</i>
-<b><br>
-&minus;kmax</b> <i>int</i></p>
+<p style="margin-left:11%;"><b>-kmin</b> <i>int</i> <b><br>
+-kmax</b> <i>int</i></p>
 
 <p style="margin-left:22%;">Specify the minimum and maximum
 distance between consecutive key frames (independently
 decodable frames) in the output animation. The tool will
 insert some key frames into the output animation as needed
 so that this criteria is satisfied. <br>
-A &rsquo;kmin&rsquo; value of 0 will turn off insertion of
-key frames. A &rsquo;kmax&rsquo; value of 0 will result in
-all frames being key frames. Typical values are in the range
-3 to 30. Default values are kmin = 9, kmax = 17 for lossless
-compression and kmin = 3, kmax = 5 for lossy compression.
-<br>
+A &rsquo;kmax&rsquo; value of 0 will turn off insertion of
+key frames. A &rsquo;kmax&rsquo; value of 1 will result in
+all frames being key frames. &rsquo;kmin&rsquo; value is not
+taken into account in both these special cases. Typical
+values are in the range 3 to 30. Default values are kmin =
+9, kmax = 17 for lossless compression and kmin = 3, kmax = 5
+for lossy compression. <br>
 These two options are relevant only for animated images with
 large number of frames (&gt;50). <br>
 When lower values are used, more frames will be converted to
@@ -190,7 +196,7 @@ Some restrictions: <br>
 If any of these restrictions are not met, they will be
 enforced automatically.</p>
 
-<p style="margin-left:11%;"><b>&minus;metadata</b>
+<p style="margin-left:11%;"><b>-metadata</b>
 <i>string</i></p>
 
 <p style="margin-left:22%;">A comma separated list of
@@ -205,12 +211,12 @@ Valid values: <b>all</b>, <b>none</b>, <b>icc</b>,
 <td width="9%">
 
 
-<p><b>&minus;f</b> <i>int</i></p></td>
+<p><b>-f</b> <i>int</i></p></td>
 <td width="2%"></td>
 <td width="78%">
 
 
-<p>For lossy encoding only (specified by the &minus;lossy
+<p>For lossy encoding only (specified by the -lossy
 option). Specify the strength of the deblocking filter,
 between 0 (no filtering) and 100 (maximum filtering). A
 value of 0 will turn off any filtering. Higher value will
@@ -223,35 +229,48 @@ of 20 to 50.</p></td></tr>
 <td width="9%">
 
 
-<p><b>&minus;mt</b></p></td>
+<p><b>-mt</b></p></td>
 <td width="2%"></td>
 <td width="78%">
 
 
-<p>Use multi-threading for encoding, if possible. This
-option is only effective when using lossy compression.</p></td></tr>
+<p>Use multi-threading for encoding, if possible.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>-loop_compatibility</b></p>
+
+<p style="margin-left:22%;">If enabled, handle the loop
+information in a compatible fashion for Chrome version prior
+to M62 (inclusive) and Firefox.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="9%">
 
 
-<p><b>&minus;v</b></p></td>
+<p><b>-v</b></p></td>
 <td width="2%"></td>
-<td width="78%">
+<td width="36%">
 
 
-<p>Print extra information.</p></td></tr>
+<p>Print extra information.</p></td>
+<td width="42%">
+</td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="9%">
 
 
-<p><b>&minus;quiet</b></p></td>
+<p><b>-quiet</b></p></td>
 <td width="2%"></td>
-<td width="78%">
+<td width="36%">
 
 
-<p>Do not print anything.</p></td></tr>
+<p>Do not print anything.</p></td>
+<td width="42%">
+</td></tr>
 </table>
 
 <h2>BUGS
@@ -271,14 +290,12 @@ http://www.webmproject.org/code/contribute/submitting-patches/</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">gif2webp
-picture.gif &minus;o picture.webp <br>
-gif2webp &minus;q 70 picture.gif &minus;o picture.webp <br>
-gif2webp &minus;lossy &minus;m 3 picture.gif &minus;o
-picture_lossy.webp <br>
-gif2webp &minus;lossy &minus;f 50 picture.gif &minus;o
-picture.webp <br>
-gif2webp &minus;q 70 &minus;o picture.webp &minus;&minus;
-&minus;&minus;&minus;picture.gif</p>
+picture.gif -o picture.webp <br>
+gif2webp -q 70 picture.gif -o picture.webp <br>
+gif2webp -lossy -m 3 picture.gif -o picture_lossy.webp <br>
+gif2webp -lossy -f 50 picture.gif -o picture.webp <br>
+gif2webp -q 70 -o picture.webp -- ---picture.gif <br>
+cat picture.gif | gif2webp -o - -- - &gt; output.webp</p>
 
 <h2>AUTHORS
 <a name="AUTHORS"></a>

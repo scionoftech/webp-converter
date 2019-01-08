@@ -23,9 +23,9 @@ console.log(query);
  exec(enwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -49,9 +49,9 @@ console.log(query);
  exec(dewebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -73,9 +73,9 @@ var query = option +' '+ input_image +' -o '+ output_image;//command to convert 
  exec(gifwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -98,9 +98,9 @@ var query = '-set '+ option +' '+ icc_profile +' '+ input_image +' -o '+ output_
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -119,9 +119,9 @@ var query = '-get '+ option +' '+ input_image +' -o '+ icc_profile;
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -140,9 +140,9 @@ var query = '-strip '+ option +' '+ input_image +' -o '+ output_image;
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -172,9 +172,9 @@ var query = files+' -loop '+ loop +' -bgcolor '+ bgcolor +' -o '+ output_image;
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };
@@ -194,9 +194,9 @@ var query = '-get frame '+ frame_number +' '+ input_image +' -o '+ output_image;
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
  	{ 
  		if(error){
- 			callback("101"+"\n"+error);//return error code
+ 			callback("101",error);//return error code
  		}else {
-  			callback("100\nConverted Successfully");//return success code
+  			callback("100","");//return success code
  	      }
  });
 };

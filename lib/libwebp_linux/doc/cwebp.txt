@@ -37,15 +37,15 @@ OPTIONS
               Print the version number (as major.minor.revision) and exit.
 
        -lossless
-              Encode the image without any loss. For images with fully  trans‐
+              Encode the image without any loss. For images with fully  trans-
               parent area, the invisible pixel values (R/G/B or Y/U/V) will be
               preserved only if the -exact option is used.
 
        -near_lossless int
               Use near-lossless image preprocessing. This option adjusts pixel
               values  to  help  compressibility, but has minimal impact on the
-              visual quality.  It triggers lossless compression mode automati‐
-              cally.   Range  is  0 (maximum preprocessing) to 100 (no prepro‐
+              visual quality.  It triggers lossless compression mode automati-
+              cally.   Range  is  0 (maximum preprocessing) to 100 (no prepro-
               cessing, the default).
 
        -q float
@@ -70,7 +70,7 @@ OPTIONS
        -alpha_q int
               Specify the compression factor for alpha compression  between  0
               and  100.   Lossless  compression  of  alpha is achieved using a
-              value of 100, while the lower values result in a lossy  compres‐
+              value of 100, while the lower values result in a lossy  compres-
               sion. The default is 100.
 
        -preset string
@@ -95,14 +95,12 @@ OPTIONS
               the value will be calculated preserving the aspect-ratio.
 
        -crop x_position y_position width height
-              Crop the source to a rectangle with top-left corner  at  coordi‐
+              Crop the source to a rectangle with top-left corner  at  coordi-
               nates  (x_position,  y_position)  and size width x height.  This
-              cropping area must be fully contained within the source  rectan‐
+              cropping area must be fully contained within the source  rectan-
               gle.
 
-       -mt    Use  multi-threading  for  encoding, if possible. This option is
-              only effective when using lossy compression on a source  with  a
-              transparency channel.
+       -mt    Use multi-threading for encoding, if possible.
 
        -low_memory
               Reduce  memory  usage of lossy encoding by saving four times the
@@ -122,15 +120,15 @@ OPTIONS
 
 
        -size int
-              Specify a target size (in bytes) to try and reach for  the  com‐
-              pressed output.  The compressor will make several passes of par‐
-              tial encoding in order to get as close as possible to this  tar‐
+              Specify a target size (in bytes) to try and reach for  the  com-
+              pressed output.  The compressor will make several passes of par-
+              tial encoding in order to get as close as possible to this  tar-
               get. If both -size and -psnr are used, -size value will prevail.
 
        -psnr float
-              Specify  a  target  PSNR  (in  dB) to try and reach for the com‐
-              pressed output.  The compressor will make several passes of par‐
-              tial  encoding in order to get as close as possible to this tar‐
+              Specify  a  target  PSNR  (in  dB) to try and reach for the com-
+              pressed output.  The compressor will make several passes of par-
+              tial  encoding in order to get as close as possible to this tar-
               get. If both -size and -psnr are used, -size value will prevail.
 
        -pass int
@@ -140,12 +138,12 @@ OPTIONS
               a default value of '6' passes will be used.
 
        -af    Turns  auto-filter on. This algorithm will spend additional time
-              optimizing the filtering strength to reach a well-balanced qual‐
+              optimizing the filtering strength to reach a well-balanced qual-
               ity.
 
        -jpeg_like
               Change  the  internal  parameter  mapping  to  better  match the
-              expected size of JPEG compression. This flag will generally pro‐
+              expected size of JPEG compression. This flag will generally pro-
               duce  an output file of similar size to its JPEG equivalent (for
               the same -q setting), but with less visual distortion.
 
@@ -172,11 +170,16 @@ OPTIONS
               Disable  strong  filtering (if filtering is being used thanks to
               the -f option) and use simple filtering instead.
 
+       -sharp_yuv
+              Use more accurate and sharper  RGB->YUV  conversion  if  needed.
+              Note  that  this  process  is  slower  than  the  default 'fast'
+              RGB->YUV conversion.
+
        -sns int
               Specify the amplitude of  the  spatial  noise  shaping.  Spatial
               noise  shaping (or sns for short) refers to a general collection
               of built-in algorithms used to decide which area of the  picture
-              should use relatively less bits, and where else to better trans‐
+              should use relatively less bits, and where else to better trans-
               fer these bits. The possible range goes  from  0  (algorithm  is
               off) to 100 (the maximal effect). The default value is 50.
 
@@ -187,9 +190,9 @@ OPTIONS
               up, unless -low_memory is used.
 
        -partition_limit int
-              Degrade quality by limiting the number of bits used by some mac‐
+              Degrade quality by limiting the number of bits used by some mac-
               roblocks.  Range is 0 (no degradation, the default) to 100 (full
-              degradation).  Useful values are usually around 30-70 for moder‐
+              degradation).  Useful values are usually around 30-70 for moder-
               ately  large  images.   In the VP8 format, the so-called control
               partition has a limit of 512k and is used to store the following
               information: whether the macroblock is skipped, which segment it
@@ -202,7 +205,7 @@ OPTIONS
               is problematic for very large images. The partition_limit factor
               controls  how  frequently  the  most bit-costly mode (intra 4x4)
               will be used. This is useful in case the 512k limit  is  reached
-              and  the  following  message is displayed: Error code: 6 (PARTI‐
+              and  the  following  message is displayed: Error code: 6 (PARTI-
               TION0_OVERFLOW: Partition #0 is too big to fit 512k).  If  using
               -partition_limit  is not enough to meet the 512k constraint, one
               should use less segments in order to save more header  bits  per
@@ -235,7 +238,7 @@ OPTIONS
 
        -map int
               Output additional ASCII-map of  encoding  information.  Possible
-              map  values range from 1 to 6. This is only meant to help debug‐
+              map  values range from 1 to 6. This is only meant to help debug-
               ging.
 
 
@@ -243,7 +246,7 @@ OPTIONS
        More advanced options are:
 
        -s width height
-              Specify that the input file actually consists of raw Y'CbCr sam‐
+              Specify that the input file actually consists of raw Y'CbCr sam-
               ples  following the ITU-R BT.601 recommendation, in 4:2:0 linear
               format.  The luma plane has size width x height.
 
@@ -254,7 +257,7 @@ OPTIONS
 
        -alpha_filter string
               Specify the predictive filtering method for the alpha plane. One
-              of  'none', 'fast' or 'best', in increasing complexity and slow‐
+              of  'none', 'fast' or 'best', in increasing complexity and slow-
               ness order. Default is 'fast'. Internally,  alpha  filtering  is
               performed  using  four  possible  predictions (none, horizontal,
               vertical, gradient). The 'best' mode will try each mode in  turn
@@ -263,7 +266,7 @@ OPTIONS
               modes.
 
        -alpha_method int
-              Specify  the algorithm used for alpha compression: 0 or 1. Algo‐
+              Specify  the algorithm used for alpha compression: 0 or 1. Algo-
               rithm 0 denotes no compression, 1 uses WebP lossless format  for
               compression. The default is 1.
 
@@ -296,7 +299,7 @@ OPTIONS
 BUGS
        Please    report     all     bugs     to     the     issue     tracker:
        https://bugs.chromium.org/p/webp
-       Patches  welcome!  See  this  page  to get started: http://www.webmpro‐
+       Patches  welcome!  See  this  page  to get started: http://www.webmpro-
        ject.org/code/contribute/submitting-patches/
 
 
@@ -309,10 +312,10 @@ EXAMPLES
 
 AUTHORS
        cwebp is a part of libwebp and was written by the WebP team.
-       The  latest  source  tree  is  available  at   https://chromium.google‐
+       The  latest  source  tree  is  available  at   https://chromium.google-
        source.com/webm/libwebp
 
-       This   manual   page  was  written  by  Pascal  Massimino  <pascal.mas‐
+       This   manual   page  was  written  by  Pascal  Massimino  <pascal.mas-
        simino@gmail.com>, for the Debian project (and may be used by others).
 
 
@@ -323,4 +326,4 @@ SEE ALSO
 
 
 
-                              September 02, 2016                      CWEBP(1)
+                               January 20, 2017                       CWEBP(1)

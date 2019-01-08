@@ -13,15 +13,21 @@ SYNOPSIS
        webpmux -strip STRIP_OPTIONS INPUT -o OUTPUT
        webpmux -frame FRAME_OPTIONS [ -frame ... ] [ -loop LOOP_COUNT ]
                [ -bgcolor BACKGROUND_COLOR ] -o OUTPUT
+       webpmux -duration DURATION OPTIONS [ -duration ... ] INPUT -o OUTPUT
        webpmux -info INPUT
        webpmux [-h|-help]
        webpmux -version
+       webpmux argument_file_name
 
 DESCRIPTION
        This manual page documents the webpmux command.
 
        webpmux can be used to create/extract from animated WebP files, as well
-       as to add/extract/strip XMP/EXIF metadata and ICC profile.
+       as to add/extract/strip XMP/EXIF metadata and ICC profile.  If a single
+       file  name  (not  starting  with  the character '-') is supplied as the
+       argument, the command line arguments are actually tokenized  from  this
+       file.   This  allows  for easy scripting or using large number of argu-
+       ments.
 
 OPTIONS
    GET_OPTIONS (-get):
@@ -32,7 +38,7 @@ OPTIONS
        xmp    Get XMP metadata.
 
        frame n
-              Get nth frame from an animated image. (n = 0 has a special mean‐
+              Get nth frame from an animated image. (n = 0 has a special mean-
               ing: last frame).
 
 
@@ -61,11 +67,42 @@ OPTIONS
        xmp    Strip XMP metadata.
 
 
+   DURATION_OPTIONS (-duration)
+       Amend  the  duration  of  a specific interval of frames. This option is
+       only effective on animated WebP and has no  effect  on  a  single-frame
+       file.
+
+       duration[,start[,end]]
+              Where:
+              duration  is  the  duration  for  the  interval  in milliseconds
+              (mandatory).  Must be non-negative.
+              start is the starting frame index of the interval (optional).
+              end is the  ending  frame  index  (inclusive)  of  the  interval
+              (optional).
+
+       The three typical usages of this option are:
+              -duration d
+                   set the duration to 'd' for the whole animation.
+              -duration d,f
+                   set the duration of frame 'f' to 'd'.
+              -duration d,start,end
+                   set the duration to 'd' for the whole [start,end] interval.
+
+
+              Note  that  the frames outside of the [start, end] interval will
+              remain untouched.
+              The 'end' value '0' has the special meaning 'last frame  of  the
+              animation'.
+
+       Reminder:
+              frame indexing starts at '1'.
+
+
    FRAME_OPTIONS (-frame)
        Create an animated WebP file from multiple (non-animated) WebP images.
 
        file_i +di[+xi+yi[+mi[bi]]]
-              Where: 'file_i' is the i'th frame (WebP format), 'xi','yi' spec‐
+              Where: 'file_i' is the i'th frame (WebP format), 'xi','yi' spec-
               ify the image offset for this frame, 'di' is the pause  duration
               before  next frame, 'mi' is the dispose method for this frame (0
               for NONE or 1 for BACKGROUND) and 'bi' is  the  blending  method
@@ -77,7 +114,7 @@ OPTIONS
 
        -loop n
               Loop the frames n number of times. 0 indicates the frames should
-              loop forever.  Valid range is 0  to  65535  [Default:  0  (infi‐
+              loop forever.  Valid range is 0  to  65535  [Default:  0  (infi-
               nite)].
 
        -bgcolor A,R,G,B
@@ -103,7 +140,7 @@ OPTIONS
 BUGS
        Please    report     all     bugs     to     the     issue     tracker:
        https://bugs.chromium.org/p/webp
-       Patches  welcome!  See  this  page  to get started: http://www.webmpro‐
+       Patches  welcome!  See  this  page  to get started: http://www.webmpro-
        ject.org/code/contribute/submitting-patches/
 
 
@@ -151,7 +188,7 @@ EXAMPLES
 
 AUTHORS
        webpmux is a part of libwebp and was written by the WebP team.
-       The  latest  source  tree  is  available  at   https://chromium.google‐
+       The  latest  source  tree  is  available  at   https://chromium.google-
        source.com/webm/libwebp
 
        This  manual  page was written by Vikas Arora <vikaas.arora@gmail.com>,
@@ -165,4 +202,4 @@ SEE ALSO
 
 
 
-                                 June 23, 2016                      WEBPMUX(1)
+                                April 23, 2018                      WEBPMUX(1)

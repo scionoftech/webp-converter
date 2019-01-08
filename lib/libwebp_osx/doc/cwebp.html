@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.19.2 -->
-<!-- CreationDate: Thu Dec 15 16:17:40 2016 -->
+<!-- CreationDate: Thu Nov  8 22:59:33 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -223,13 +223,13 @@ within the source rectangle.</p>
 
 <p style="margin-top: 1em" valign="top"><b>&minus;mt</b></p> </td>
 <td width="7%"></td>
-<td width="78%">
+<td width="70%">
 
 
 <p style="margin-top: 1em" valign="top">Use
-multi&minus;threading for encoding, if possible. This option
-is only effective when using lossy compression on a source
-with a transparency channel.</p></td>
+multi&minus;threading for encoding, if possible.</p></td>
+<td width="8%">
+</td>
 </table>
 
 <p style="margin-left:11%;"><b>&minus;low_memory</b></p>
@@ -349,6 +349,13 @@ option). Strong filtering is on by default.</p>
 <p style="margin-left:22%;">Disable strong filtering (if
 filtering is being used thanks to the <b>&minus;f</b>
 option) and use simple filtering instead.</p>
+
+<p style="margin-left:11%;"><b>&minus;sharp_yuv</b></p>
+
+<p style="margin-left:22%;">Use more accurate and sharper
+RGB-&gt;YUV conversion if needed. Note that this process is
+slower than the default &rsquo;fast&rsquo; RGB-&gt;YUV
+conversion.</p>
 
 <p style="margin-left:11%;"><b>&minus;sns</b>
 <i>int</i></p>

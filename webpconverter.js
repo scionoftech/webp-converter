@@ -5,8 +5,6 @@ var gifwebp=require('./gwebp.js');//get gif2webp module(convert git image to web
 var webpmux=require('./webpmux.js');//get webpmux module(convert non animated webp images to animated webp) 
 
 
-/******************************************************* cwebp *****************************************************/
-
 //now convert image to .webp format 
 module.exports.cwebp =function(input_image,output_image,option,callback)
 {
@@ -21,12 +19,12 @@ console.log(query);
 
 //enwebp() return which platform webp library should be used for conversion
  exec(enwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -47,12 +45,12 @@ console.log(query);
 
 //dewebp() return which platform webp library should be used for conversion
  exec(dewebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -71,12 +69,12 @@ var query = option +' '+ input_image +' -o '+ output_image;//command to convert 
 
 //gifwebp() return which platform webp library should be used for conversion
  exec(gifwebp(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -96,12 +94,12 @@ var query = '-set '+ option +' '+ icc_profile +' '+ input_image +' -o '+ output_
 
 //webpmux() return which platform webp library should be used for conversion
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -117,12 +115,12 @@ var query = '-get '+ option +' '+ input_image +' -o '+ icc_profile;
 
 //webpmux() return which platform webp library should be used for conversion
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -138,12 +136,12 @@ var query = '-strip '+ option +' '+ input_image +' -o '+ output_image;
 
 //webpmux() return which platform webp library should be used for conversion
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -163,19 +161,19 @@ var j=input_images.length;
 
 for (i = 1; i < j; i++) { 
     files=files+' -frame '+input_images[i];
-	console.log(files);
+  console.log(files);
 }
 
 var query = files+' -loop '+ loop +' -bgcolor '+ bgcolor +' -o '+ output_image;
 
 //webpmux() return which platform webp library should be used for conversion
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };
 
@@ -192,11 +190,11 @@ var query = '-get frame '+ frame_number +' '+ input_image +' -o '+ output_image;
 
 //webpmux() return which platform webp library should be used for conversion
  exec(webpmux(),query.split(/\s+/), function (error, stdout, stderr) //execute command 
- 	{ 
- 		if(error){
- 			callback("101"+"\n"+error);//return error code
- 		}else {
-  			callback("100\nConverted Successfully");//return success code
- 	      }
+  { 
+    if(error){
+      callback("101",error);//return error code
+    }else {
+        callback("100","");//return success code
+        }
  });
 };

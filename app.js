@@ -5,28 +5,31 @@ var webp=require('./webpconverter_test.js');
 /******************************************************* cwebp *****************************************************/
 
 //pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp file type extension)
-webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",function(status)
+webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",function(status,error)
 	{
-		//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});
 
 /******************************************************* dwebp *****************************************************/
 
 //pass input_image(.webp image) path ,output_image(.jpeg,.pnp .....)
-/*webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o",function(status)
+/*webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o",function(status,error)
 	{
-		//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});*/
 
 /******************************************************* gif2webp *****************************************************/
 
 /*	//pass input_image(.gif) path ,output_image(give path where to save and image file name with .webp file type extension)
-webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status)
+webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status,error)
 	{
-		//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});*/
 
 /******************************************************* webpmux *****************************************************/
@@ -39,10 +42,11 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc",function(status){
+/*webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc",function(status,error){
 
-//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+         //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 
 });*/
 
@@ -54,10 +58,12 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_extract("anim_container.webp","image_profile.icc","icc",function(status){
+/*webp.webpmux_extract("anim_container.webp","image_profile.icc","icc",function(status,error){
 
-//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
+		
 
 });*/
 
@@ -69,10 +75,11 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_strip("icc_container.webp","without_icc.webp","icc",function(status){
+/*webp.webpmux_strip("icc_container.webp","without_icc.webp","icc",function(status,error){
 
-//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+         //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);		
 
 });*/
 
@@ -106,19 +113,21 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 */
 
 /*var inpu=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100","./frames/tmp-2.webp +100"];
-webp.webpmux_animate(inpu,"anim_container.webp","10","255,255,255,255",function(status)
+webp.webpmux_animate(inpu,"anim_container.webp","10","255,255,255,255",function(status,error)
 	{
-		//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+		//if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);	
 	});*/
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Get the a frame from an animated WebP file
 
 //pass input_image(.webp image) path ,output_image and frame number
 
-/*webp.webpmux_getframe("anim_container.webp","frame_2.webp","2",function(status){
+/*webp.webpmux_getframe("anim_container.webp","frame_2.webp","2",function(status,error){
 
-//if conversion successfull status will be 'converted successfully'
-		console.log(status);
+        //if conversion successful status will be '100'
+		//if conversion fails status will be '101'
+		console.log(status,error);		
 
 });*/

@@ -4,7 +4,7 @@
           \__\__/\____/\_____/__/ ____  ___
                 / _/ /    \    \ /  _ \/ _/
                /  \_/   / /   \ \   __/  \__
-               \____/____/\_____/_____/____/v0.5.2
+               \____/____/\_____/_____/____/v1.0.1
 
 Description:
 ============
@@ -25,19 +25,23 @@ property rights grant can be found in the file PATENTS.
 
 Files:
 ======
-cwebp.exe        : encoding tool
-dwebp.exe        : decoding tool
-gif2webp.exe     : gif conversion tool
-vwebp.exe        : webp visualization tool
-lib/             : static libraries
-include/webp     : headers
-test.webp        : a sample WebP file.
-test_ref.ppm     : the test.webp file decoded into the PPM format.
+bin/cwebp.exe      : encoding tool
+bin/dwebp.exe      : decoding tool
+bin/anim2webp.exe  : animation creation tool
+bin/gif2webp.exe   : gif conversion tool
+bin/vwebp.exe      : webp visualization tool
+bin/webpinfo.exe   : webp analysis tool
+bin/webpmux.exe    : webp muxing tool
+bin/anim_diff.exe  : webp files comparison tool
+bin/anim_dump.exe  : tool for dumping animation frames
+lib/               : static libraries
+include/webp       : headers
 
 Encoding tool:
 ==============
 
-The package contains tools for encoding (cwebp) and decoding (dwebp) images.
+The bin/ directory contains tools for encoding (cwebp.exe) and
+decoding (dwebp.exe) images.
 
 The easiest use should look like:
   cwebp input.png -q 80 -o output.webp
@@ -82,6 +86,7 @@ Options:
   -sharpness <int> ....... filter sharpness (0:most .. 7:least sharp), default=0
   -strong ................ use strong filter instead of simple (default)
   -nostrong .............. use simple filter instead of strong
+  -sharp_yuv ............. use sharper (and slower) RGB->YUV conversion
   -partition_limit <int> . limit quality to fit the 512k limit on
                            the first partition (0=no degradation ... 100=full)
   -pass <int> ............ analysis pass number (1..10)
@@ -199,6 +204,23 @@ Use following options to convert into alternate image formats:
   -quiet ....... quiet mode, don't print anything
   -noasm ....... disable all assembly optimizations
 
+WebP file analysis tool:
+========================
+
+'webpinfo' can be used to print out the chunk level structure and bitstream
+header information of WebP files. It can also check if the files are of valid
+WebP format.
+
+Usage: webpinfo [options] in_files
+Note: there could be multiple input files;
+      options must come before input files.
+Options:
+  -version ........... Print version number and exit.
+  -quiet ............. Do not show chunk parsing information.
+  -diag .............. Show parsing error diagnosis.
+  -summary ........... Show chunk stats summary.
+  -bitstream_info .... Parse bitstream header.
+
 Visualization tool:
 ===================
 
@@ -217,14 +239,52 @@ Options are:
   -nofilter .... disable in-loop filtering
   -dither <int>  dithering strength (0..100), default=50
   -noalphadither disable alpha plane dithering
+  -usebgcolor .. display background color
   -mt .......... use multi-threading
   -info ........ print info
   -h ........... this help message
 
 Keyboard shortcuts:
   'c' ................ toggle use of color profile
+  'b' ................ toggle background color display
   'i' ................ overlay file information
+  'd' ................ disable blending & disposal (debug)
   'q' / 'Q' / ESC .... quit
+
+Animation creation tool:
+========================
+The utility 'img2webp' can turn a sequence of input images (PNG, JPEG, ...)
+into an animated WebP file. It offers fine control over duration, encoding
+modes, etc.
+
+Usage:
+
+  img2webp [file-level options] [image files...] [per-frame options...]
+
+File-level options (only used at the start of compression):
+ -min_size ............ minimize size
+ -loop <int> .......... loop count (default: 0, = infinite loop)
+ -kmax <int> .......... maximum number of frame between key-frames
+                        (0=only keyframes)
+ -kmin <int> .......... minimum number of frame between key-frames
+                        (0=disable key-frames altogether)
+ -mixed ............... use mixed lossy/lossless automatic mode
+ -v ................... verbose mode
+ -h ................... this help
+ -version ............. print version number and exit
+
+Per-frame options (only used for subsequent images input):
+ -d <int> ............. frame duration in ms (default: 100)
+ -lossless  ........... use lossless mode (default)
+ -lossy ... ........... use lossy mode
+ -q <float> ........... quality
+ -m <int> ............. method to use
+
+example: img2webp -loop 2 in0.png -lossy in1.jpg
+                  -d 80 in2.tiff -o out.webp
+
+Note: if a single file name is passed as the argument, the arguments will be
+tokenized from this file. The file name must not start with the character '-'.
 
 Animated GIF conversion:
 ========================
@@ -251,6 +311,8 @@ Options:
   -metadata <string> ..... comma separated list of metadata to
                            copy from the input to the output if present
                            Valid values: all, none, icc, xmp (default)
+  -loop_compatibility .... use compatibility mode for Chrome
+                           version prior to M62 (inclusive)
   -mt .................... use multi-threading if available
 
   -version ............... print version number and exit
@@ -269,6 +331,11 @@ Options:
   -min_psnr <float> ... minimum per-frame PSNR
   -raw_comparison ..... if this flag is not used, RGB is
                         premultiplied before comparison
+  -max_diff <int> ..... maximum allowed difference per channel
+                        between corresponding pixels in subsequent
+                        frames
+  -h .................. this help
+  -version ............ print version number and exit
 
 Encoding API:
 =============
