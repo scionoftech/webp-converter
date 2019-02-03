@@ -16,16 +16,16 @@ For converting gif image to webp, please read this documentation [gif2webp Conve
 For creating animated webp image using webp images, please read this documentation [webpmux Muxer](https://developers.google.com/speed/webp/docs/webpmux)
 
 
-##What's New 
+## What's New 
 * Precompiled executables of WebP(v1.0.1) added
 * Status issue resolved
 
 
 # How to use
 
-#cwebp
+# cwebp
 
-##Convert other image format to webp
+## Convert other image format to webp
 
   ```js
 
@@ -46,9 +46,9 @@ webp.cwebp("input.jpg","output.webp","-q 80",function(status,error)
 
 ```
 
-#dwebp
+# dwebp
 
-##Convert webp image to other image format
+## Convert webp image to other image format
 
   ```js
 
@@ -67,9 +67,9 @@ webp.dwebp("input.webp","output.jpg","-o",function(status,error)
 
 ```
 
-#gif2webp
+# gif2webp
 
-##Convert gif image to webp
+## Convert gif image to webp
 
   ```js
 
@@ -90,9 +90,9 @@ webp.gwebp("input.gif","output.webp","-q 80",function(status,error)
 
 ```
 
-#webpmux
+# webpmux
 
-##Add ICC profile,XMP metadata and EXIF metadata
+## Add ICC profile,XMP metadata and EXIF metadata
 
   ```js
 
@@ -117,7 +117,7 @@ webp.webpmux_add("input.webp","output.webp","image_profile.icc","icc",function(s
 
 ```
 
-##Extract ICC profile,XMP metadata and EXIF metadata
+## Extract ICC profile,XMP metadata and EXIF metadata
 
   ```js
 
@@ -142,7 +142,7 @@ webp.webpmux_extract("input.webp","output.icc","icc",function(status,error){
 
 ```
 
-##Strip ICC profile,XMP metadata and EXIF metadata
+## Strip ICC profile,XMP metadata and EXIF metadata
 
   ```js
 
@@ -167,7 +167,7 @@ webp.webpmux_strip("input.webp","ouput.webp","icc",function(status,error){
 
 ```
 
-##Create an animated WebP file from Webp images
+## Create an animated WebP file from Webp images
 
   ```js
 
@@ -214,7 +214,7 @@ webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255",function
 
 ```
 
-##Get a frame from an animated WebP file
+## Get a frame from an animated WebP file
 
   ```js
 
