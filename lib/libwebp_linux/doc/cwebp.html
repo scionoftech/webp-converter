@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Fri Nov  9 06:58:25 2018 -->
+<!-- CreationDate: Thu Jul  4 19:41:30 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,12 +107,14 @@ pixel values (R/G/B or Y/U/V) will be preserved only if the
 <p style="margin-left:11%;"><b>-near_lossless</b>
 <i>int</i></p>
 
-<p style="margin-left:22%;">Use near-lossless image
-preprocessing. This option adjusts pixel values to help
-compressibility, but has minimal impact on the visual
-quality. It triggers lossless compression mode
-automatically. Range is 0 (maximum preprocessing) to 100 (no
-preprocessing, the default).</p>
+<p style="margin-left:22%;">Specify the level of
+near-lossless image preprocessing. This option adjusts pixel
+values to help compressibility, but has minimal impact on
+the visual quality. It triggers lossless compression mode
+automatically. The range is 0 (maximum preprocessing) to 100
+(no preprocessing, the default). The typical value is around
+60. Note that lossy with <b>-q 100</b> can at times yield
+better results.</p>
 
 <p style="margin-left:11%;"><b>-q</b> <i>float</i></p>
 

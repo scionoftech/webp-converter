@@ -42,11 +42,13 @@ OPTIONS
               preserved only if the -exact option is used.
 
        -near_lossless int
-              Use near-lossless image preprocessing. This option adjusts pixel
-              values  to  help  compressibility, but has minimal impact on the
-              visual quality.  It triggers lossless compression mode automati-
-              cally.   Range  is  0 (maximum preprocessing) to 100 (no prepro-
-              cessing, the default).
+              Specify the level of  near-lossless  image  preprocessing.  This
+              option  adjusts  pixel  values  to help compressibility, but has
+              minimal impact on the visual quality. It triggers lossless  com-
+              pression mode automatically. The range is 0 (maximum preprocess-
+              ing) to 100 (no preprocessing, the default). The  typical  value
+              is  around  60.  Note  that lossy with -q 100 can at times yield
+              better results.
 
        -q float
               Specify the compression factor for RGB channels  between  0  and
@@ -326,4 +328,4 @@ SEE ALSO
 
 
 
-                               January 20, 2017                       CWEBP(1)
+                               January 11, 2019                       CWEBP(1)

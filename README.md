@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.2.2](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.2.3](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -17,8 +17,7 @@ For creating animated webp image using webp images, please read this documentati
 
 
 ## What's New 
-* Precompiled executables of WebP(v1.0.1) added
-* Status issue resolved
+* Precompiled executables of WebP(v1.0.3) added
 
 
 # How to use
