@@ -4,6 +4,25 @@ const dewebp=require('./dwebp.js');//get dwebp module(converts webp format to ot
 const gifwebp=require('./gwebp.js');//get gif2webp module(convert git image to webp)
 const webpmux=require('./webpmux.js');//get webpmux module(convert non animated webp images to animated webp)
 
+function handleResult (error, stdout, stderr, resolve, reject) {
+  if (error) {
+    console.warn(error);
+   }
+ 
+   if (stdout) {
+     resolve(stdout);
+   }else {
+     reject(stderr)
+   }
+ 
+   if (callback) {
+     if (error) {
+       callback("101",error);
+     }else {
+       callback("100",stdout);
+     }
+   }
+}
 
 //now convert image to .webp format 
 module.exports.cwebp =function(input_image,output_image,option,callback)
@@ -21,10 +40,7 @@ console.log(query);
 return new Promise((resolve, reject) => {
   //execute command 
  exec(enwebp(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -47,10 +63,7 @@ console.log(query);
 return new Promise((resolve, reject) => {
   //execute command 
  exec(dewebp(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -72,10 +85,7 @@ const query = `${option} ${input_image} -o ${output_image}`;//command to convert
 return new Promise((resolve, reject) => {
   //execute command 
  exec(gifwebp(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -98,10 +108,7 @@ const query = `-set ${option} ${icc_profile} ${input_image} -o ${output_image}`;
 return new Promise((resolve, reject) => {
   //execute command 
  exec(webpmux(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -120,10 +127,7 @@ const query = `-get ${option} ${input_image} -o ${icc_profile}`;
 return new Promise((resolve, reject) => {
   //execute command 
  exec(webpmux(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -142,10 +146,7 @@ const query = `-strip ${option} ${input_image} -o ${output_image}`;
 return new Promise((resolve, reject) => {
   //execute command 
  exec(webpmux(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -175,10 +176,7 @@ const query = `${files} -loop ${loop} -bgcolor ${bgcolor} -o ${output_image}`;
 return new Promise((resolve, reject) => {
   //execute command 
  exec(webpmux(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
@@ -198,10 +196,7 @@ const query = `-get frame ${frame_number} ${input_image} -o ${output_image}`;
 return new Promise((resolve, reject) => {
   //execute command 
  exec(webpmux(),query.split(/\s+/), (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
+  handleResult(error, stdout, stderr, resolve, reject)
  });
 });
 };
