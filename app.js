@@ -1,40 +1,32 @@
 
 //get module
-var webp=require('./webpconverter_test.js');
+const webp=require('./src/webpconverter.js');
 
 /******************************************************* cwebp *****************************************************/
 
 //pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp file type extension)
-webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",function(status,error)
-	{
-		//if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-	});
+const result = webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80");
+result.then((response) => {
+	console.log(response);
+  });
 
 /******************************************************* dwebp *****************************************************/
 
 //pass input_image(.webp image) path ,output_image(.jpeg,.pnp .....)
-/*webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o",function(status,error)
-	{
-		//if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-	});*/
-
+// const result = webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o");
+// result.then((response) => {
+// 	console.log(response);
+//   });
 /******************************************************* gif2webp *****************************************************/
 
-/*	//pass input_image(.gif) path ,output_image(give path where to save and image file name with .webp file type extension)
-webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status,error)
-	{
-		//if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-	});*/
-
+//pass input_image(.gif) path ,output_image(give path where to save and image file name with .webp file type extension)
+// const result = webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80");
+// result.then((response) => {
+// 	console.log(response);
+//   });
 /******************************************************* webpmux *****************************************************/
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Add ICC profile,XMP metadata and EXIF metadata
+//%%%%%%%%%%%%%%%%%%%%% Add ICC profile,XMP metadata and EXIF metadata
 
 //pass input_image(.webp image) path ,output_image,set options(icc image profile,XMP metadata or EXIF metadata) and file.
 //for options use keywords as below
@@ -42,15 +34,11 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status,error)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc",function(status,error){
-
-         //if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-
-});*/
-
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Extract ICC profile,XMP metadata and EXIF metadata
+// const result = webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc");
+// result.then((response) => {
+// 	console.log(response);
+//   });
+//%%%%%%%%%%%%%%%%%% Extract ICC profile,XMP metadata and EXIF metadata
 
 //pass input_image(.webp image) path ,output_image,set options(icc image profile,XMP metadata or EXIF metadata) and file.
 //for options use keywords as below
@@ -58,16 +46,11 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status,error)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_extract("anim_container.webp","image_profile.icc","icc",function(status,error){
-
-		//if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-		
-
-});*/
-
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Strip ICC profile,XMP metadata and EXIF metadata 
+// const result = webp.webpmux_extract("anim_container.webp","image_profile.icc","icc");
+// result.then((response) => {
+// 	console.log(response);
+//   });
+//%%%%%%%%%%%%%%%%%%% Strip ICC profile,XMP metadata and EXIF metadata 
 
 //pass input_image(.webp image) path ,output_image,set options(icc image profile,XMP metadata or EXIF metadata) and file.
 //for options use keywords as below
@@ -75,15 +58,11 @@ webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",function(status,error)
 //for XMP metadata: xmp
 //for EXIF metadata: exif
 
-/*webp.webpmux_strip("icc_container.webp","without_icc.webp","icc",function(status,error){
-
-         //if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);		
-
-});*/
-
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Create an animated WebP file from Webp images 
+// const result = webp.webpmux_strip("icc_container.webp","without_icc.webp","icc");
+// result.then((response) => {
+// 	console.log(response);
+//   });
+//%%%%%%%%%%%%%%%%%%% Create an animated WebP file from Webp images 
 
 //pass input_images(.webp image) path with FRAME_OPTIONS, as array,ouput image will be animated .webp image 
 
@@ -112,22 +91,15 @@ e.g 255,255,255,255
 Background color of the canvas. Where: A, R, G and B are integers in the range 0 to 255 specifying the Alpha, Red, Green and Blue component values respectively [Default: 255,255,255,255].
 */
 
-/*var inpu=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100","./frames/tmp-2.webp +100"];
-webp.webpmux_animate(inpu,"anim_container.webp","10","255,255,255,255",function(status,error)
-	{
-		//if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);	
-	});*/
-
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Get the a frame from an animated WebP file
+// let input=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100","./frames/tmp-2.webp +100"];
+// const result = webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255");
+// result.then((response) => {
+// 	console.log(response);
+//   });
+//%%%%%%%%%%%%%%% Get the a frame from an animated WebP file
 
 //pass input_image(.webp image) path ,output_image and frame number
-
-/*webp.webpmux_getframe("anim_container.webp","frame_2.webp","2",function(status,error){
-
-        //if conversion successful status will be '100'
-		//if conversion fails status will be '101'
-		console.log(status,error);		
-
-});*/
+// const result = webp.webpmux_getframe("anim_container.webp","frame_2.webp","2");
+// result.then((response) => {
+// 	console.log(response);
+//   });
