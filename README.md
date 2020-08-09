@@ -24,7 +24,7 @@ For creating animated webp image using webp images, please read this documentati
 
 # How to use
 
-# Fix Permission Issue
+## Fix Permission Issue
 
   ```js
 
