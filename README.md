@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.2.9](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.3.0](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -72,7 +72,7 @@ function get_webpbase64(path) {
         // base64str of image
       // base64str image type jpg,png ...
       //option: options and quality,it should be given between 0 to 100
-      let result = webp.str2webpstr(dataBase64,"jpeg","-q 80");
+      let result = webp.str2webpstr(dataBase64,"jpg","-q 80");
       result.then(function(result) {
         // you access the value from the promise here
         console.log(result)
@@ -98,7 +98,7 @@ function get_webpbuffer(path) {
       // buffer of image
     // buffer image type jpg,png ...
     //option: options and quality,it should be given between 0 to 100
-      let result = webp.buffer2webpbuffer(data,"jpeg","-q 80");
+      let result = webp.buffer2webpbuffer(data,"jpg","-q 80");
       result.then(function(result) {
         // you access the value from the promise here
         console.log(result)
