@@ -19,7 +19,7 @@ For creating animated webp image using webp images, please read this documentati
 ## What's New 
 * Precompiled executables of WebP(v1.1.0) added
 * Permission issue of WebP executables fixed
-* Spaces in file path issue fixed
+* Space in file path issue fixed
 * Base64 and Buffer conversion added
 
 # How to use
