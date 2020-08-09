@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.2.8](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.2.9](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -18,9 +18,22 @@ For creating animated webp image using webp images, please read this documentati
 
 ## What's New 
 * Precompiled executables of WebP(v1.1.0) added
-
+* Permission issue of WebP executables fixed
+* Spaces in file path issue fixed
+* Base64 and Buffer conversion added
 
 # How to use
+
+# Fix Permission Issue
+
+  ```js
+
+const webp=require('webp-converter');
+
+// this will grant 755 permission to webp executables
+webp.grant_permission();
+
+```
 
 # cwebp
 
@@ -40,6 +53,60 @@ result.then((response) => {
 	console.log(response);
   });
 
+
+```
+
+## Convert base64 image to webpbase64 image
+
+  ```js
+
+const webp=require('webp-converter');
+
+function get_webpbase64(path) {
+  fs.readFile(path, function (error, data) {
+    if (error) {
+      throw error;
+    } else {
+      let buf = Buffer.from(data);
+      let dataBase64 = Buffer.from(buf).toString('base64');
+        // base64str of image
+      // base64str image type jpg,png ...
+      //option: options and quality,it should be given between 0 to 100
+      let result = webp.str2webpstr(dataBase64,"jpeg","-q 80");
+      result.then(function(result) {
+        // you access the value from the promise here
+        console.log(result)
+      });
+    }
+  });
+}
+get_webpbase64("./nodejs_logo.jpg")
+
+```
+
+## Convert buffer to webp buffer
+
+  ```js
+
+const webp=require('webp-converter');
+
+function get_webpbuffer(path) {
+  fs.readFile(path, function (error, data) {
+    if (error) {
+      throw error;
+    } else {
+      // buffer of image
+    // buffer image type jpg,png ...
+    //option: options and quality,it should be given between 0 to 100
+      let result = webp.buffer2webpbuffer(data,"jpeg","-q 80");
+      result.then(function(result) {
+        // you access the value from the promise here
+        console.log(result)
+      });
+    }
+  });
+}
+get_webpbuffer("./nodejs_logo.jpg")
 
 ```
 
