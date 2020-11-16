@@ -36,5 +36,8 @@
     "temp/"
   ],
   "author": "scionoftech",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^8.3.1"
+  }
 }

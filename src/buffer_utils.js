@@ -2,6 +2,7 @@ const Buffer = require('buffer').Buffer;
 const fs = require('fs');
 const temp_path = require('./temp_path.js');
 const webp=require('./webpconverter.js');
+const uuid = require('uuid').v4;
 
 /**
  * @param  {string} filepath
@@ -44,7 +45,7 @@ const base64_to_image = (base64str,path) =>{
 // convert base64 image to webpbase64 image
 module.exports.base64str2webp = (base64str,image_type,option) => {
 
-    let filename = String(Math.floor(Math.random() * 100) + 1)
+    let filename = uuid();
 
     let input_file_path = `${temp_path()}${filename}.${image_type}`;
 
@@ -59,7 +60,7 @@ module.exports.base64str2webp = (base64str,image_type,option) => {
 
           fs.unlinkSync(input_file_path);
           fs.unlinkSync(webp_image_path);
-  
+
           return webp_base64str
       });
       }else{
@@ -77,7 +78,7 @@ module.exports.buffer2webp = (buffer,image_type,option) => {
     let buf = Buffer.from(buffer);
     let base64str = buf.toString('base64');
 
-    let filename = String(Math.floor(Math.random() * 100) + 1)
+    let filename = uuid();
 
     let input_file_path = `${temp_path()}${filename}.${image_type}`;
 
@@ -98,5 +99,5 @@ module.exports.buffer2webp = (buffer,image_type,option) => {
     }else{
       console.log("Failed")
     }
-    
+
 }
