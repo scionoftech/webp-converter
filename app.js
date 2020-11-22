@@ -92,7 +92,7 @@ e.g 255,255,255,255
 Background color of the canvas. Where: A, R, G and B are integers in the range 0 to 255 specifying the Alpha, Red, Green and Blue component values respectively [Default: 255,255,255,255].
 */
 
-// let input=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100","./frames/tmp-2.webp +100"];
+// let input=[{"path":"./frames/tmp-0.webp","offset":"+100"},{"path":"./frames/tmp-1.webp", "offset":"+100"},{"path":"./frames/tmp-2.webp","offset":"+100"}];
 // const result = webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255");
 // result.then((response) => {
 // 	console.log(response);

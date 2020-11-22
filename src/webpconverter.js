@@ -186,14 +186,14 @@ module.exports.webpmux_animate = (input_images,output_image,loop,bgcolor) => {
 //loop:Loop the frames n number of times
 //bgcolor: Background color of the canvas
 
-let files=`-frame ${input_images[0]}`;
+let files=`-frame ${input_images[0]["path"]} ${input_images[0]["offset"]}`;
 
 let j=input_images.length;
 
 for (i = 1; i < j; i++) { 
-    files=`${files} -frame "${input_images[i]}"`;
-  console.log(files);
+    files=`${files} -frame "${input_images[i]["path"]}" ${input_images[i]["offset"]}`;
 }
+// console.log(files);
 
 const query = `${files} -loop ${loop} -bgcolor ${bgcolor} -o "${output_image}"`;
 

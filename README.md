@@ -1,11 +1,11 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.3.0](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.3.1](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
 
-This library uses precompiled executables of WebP for more info visit [WebP](https://developers.google.com/speed/webp)
+This library uses precompiled executables of WebP(v1.1.0) for more info visit [WebP](https://developers.google.com/speed/webp)
 
 For converting other image formats to webp, please read this documentation  [cwebp Encoder](https://developers.google.com/speed/webp/docs/cwebp)
 
@@ -17,10 +17,8 @@ For creating animated webp image using webp images, please read this documentati
 
 
 ## What's New 
-* Precompiled executables of WebP(v1.1.0) added
-* Permission issue of WebP executables fixed
-* Space in file path issue fixed
-* Base64 and Buffer conversion added
+* Multiple input files issue fixed for webpmux_animate
+* Repeated temp file names issue fixed for Base64 and Buffer conversion
 
 # How to use
 
@@ -253,7 +251,7 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 
 const webp=require('webp-converter');
 
-let input=["./frames/tmp-0.webp +100","./frames/tmp-1.webp +100","./frames/tmp-2.webp +100"];
+let input=[{"path":"./frames/tmp-0.webp","offset":"+100"},{"path":"./frames/tmp-1.webp", "offset":"+100"},{"path":"./frames/tmp-2.webp","offset":"+100"}];
 const result = webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255");
 result.then((response) => {
 	console.log(response);
