@@ -28,11 +28,11 @@ module.exports.str2webpstr = (base64str,image_type,option) => {
 };
 
 //convert buffer to webp buffer
-module.exports.buffer2webpbuffer = (buffer,image_type,option) => {
+module.exports.buffer2webpbuffer = (buffer,image_type,option,overide_path=null) => {
   // buffer of image
   // buffer image type jpg,png ...
   //option: options and quality,it should be given between 0 to 100
-  return buffer_utils.buffer2webp(buffer,image_type,option).then(function(val) {
+  return buffer_utils.buffer2webp(buffer,image_type,option,overide_path).then(function(val) {
     return val
   });
 };
