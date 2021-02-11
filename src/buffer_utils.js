@@ -70,6 +70,7 @@ module.exports.base64str2webp = (base64str,image_type,option) => {
  * @param  {buffer} buffer
  * @param  {string} image_type
 * @param  {string} option
+* @param {string} tmp_path_arg
  */
 // convert image buffer  to webp buffer
 module.exports.buffer2webp = (buffer,image_type,option,tmp_path_arg='') => {
