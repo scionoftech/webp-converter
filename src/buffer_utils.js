@@ -72,16 +72,17 @@ module.exports.base64str2webp = (base64str,image_type,option) => {
 * @param  {string} option
  */
 // convert image buffer  to webp buffer
-module.exports.buffer2webp = (buffer,image_type,option) => {
+module.exports.buffer2webp = (buffer,image_type,option,tmp_path_arg='') => {
 
     let buf = Buffer.from(buffer);
     let base64str = buf.toString('base64');
 
     let filename = String(Math.floor(Math.random() * 10000000000) + 1)
 
-    let input_file_path = `${temp_path()}${filename}.${image_type}`;
+    let input_temp_path = tmp_path_arg ? tmp_path_arg : temp_path();
+    let input_file_path = `${input_temp_path}${filename}.${image_type}`;
 
-    let webp_image_path  = `${temp_path()}${filename}.webp`;
+    let webp_image_path  = `${input_temp_path}${filename}.webp`;
 
     let status = base64_to_image(base64str,input_file_path)
 
