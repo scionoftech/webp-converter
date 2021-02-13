@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.3.1](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.3.2](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -17,8 +17,7 @@ For creating animated webp image using webp images, please read this documentati
 
 
 ## What's New 
-* Multiple input files issue fixed for webpmux_animate
-* Repeated temp file names issue fixed for Base64 and Buffer conversion
+* buffer utils temp path issue fixed
 
 # How to use
 
@@ -78,7 +77,10 @@ function get_webpbase64(path) {
     }
   });
 }
+// use the default temp path for conversion
 get_webpbase64("./nodejs_logo.jpg")
+// use the custom temp path for conversion
+get_webpbase64("./nodejs_logo.jpg","/home/user/Desktop/webp/temp")
 
 ```
 
@@ -104,7 +106,10 @@ function get_webpbuffer(path) {
     }
   });
 }
+// use the default temp path for conversion
 get_webpbuffer("./nodejs_logo.jpg")
+// use the custom temp path for conversion
+get_webpbuffer("./nodejs_logo.jpg","/home/user/Desktop/webp/temp")
 
 ```
 

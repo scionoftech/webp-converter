@@ -18,21 +18,21 @@ arr.forEach(exe_path => {
 };
 
 //convert base64 to webp base64
-module.exports.str2webpstr = (base64str,image_type,option) => {
+module.exports.str2webpstr = (base64str,image_type,option,extra_path) => {
   // base64str of image
   // base64str image type jpg,png ...
   //option: options and quality,it should be given between 0 to 100
-  return buffer_utils.base64str2webp(base64str,image_type,option).then(function(val) {
+  return buffer_utils.base64str2webp(base64str,image_type,option,extra_path).then(function(val) {
     return val
   });
 };
 
 //convert buffer to webp buffer
-module.exports.buffer2webpbuffer = (buffer,image_type,option) => {
+module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
   // buffer of image
   // buffer image type jpg,png ...
   //option: options and quality,it should be given between 0 to 100
-  return buffer_utils.buffer2webp(buffer,image_type,option).then(function(val) {
+  return buffer_utils.buffer2webp(buffer,image_type,option,extra_path).then(function(val) {
     return val
   });
 };

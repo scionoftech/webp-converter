@@ -1,6 +1,6 @@
 {
   "name": "webp-converter",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A small node.js library for converting any image to webp file format or converting webp image to any image file format.",
   "main": "src/webpconverter.js",
   "scripts": {

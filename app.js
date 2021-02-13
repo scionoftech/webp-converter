@@ -6,10 +6,10 @@ const fs = require('fs');
 /******************************************************* cwebp *****************************************************/
 webp.grant_permission();
 //pass input_image(.jpeg,.pnp .....) path ,output_image(give path where to save and image file name with .webp file type extension)
-const result = webp.cwebp("./nodejs_logo.jpg","./nodejs_logo.webp","-q 80");
-result.then((response) => {
-	console.log(response);
-  });
+// const result = webp.cwebp("./nodejs_logo.jpg","./nodejs_logo.webp","-q 80");
+// result.then((response) => {
+// 	console.log(response);
+//   });
 
 /******************************************************* dwebp *****************************************************/
 
@@ -120,16 +120,16 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 //     }
 //   });
 // }
-// get_webpbuffer("./nodejs_logo.jpg")
+// get_webpbuffer("./nodejs_logo.jpg","/home","/home/user/Desktop/webp/temp")
 
-// function get_webpbase64(path) {
+// function get_webpbase64(path,temp_path) {
 //   fs.readFile(path, function (error, data) {
 //     if (error) {
 //       throw error;
 //     } else {
 //       let buf = Buffer.from(data);
 //       let dataBase64 = Buffer.from(buf).toString('base64');
-//       const result = webp.str2webpstr(dataBase64,"jpeg","-q 80");
+//       const result = webp.str2webpstr(dataBase64,"jpeg","-q 80",temp_path);
 //       result.then(function(result) {
 //         // you access the value from the promise here
 //         console.log(result)
@@ -137,4 +137,4 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 //     }
 //   });
 // }
-// get_webpbase64("./nodejs_logo.jpg")
+// get_webpbase64("./nodejs_logo.jpg","/home/user/Desktop/test/")

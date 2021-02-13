@@ -1,7 +1,12 @@
 
 const path = require('path');
 //get os type then return path of respective platform library 
-const temp_files=function() {
+const temp_files=function(extra_path) {
+    
+    if ((process.platform === 'darwin' || process.platform === 'linux' || process.arch === 'x64') && extra_path) {
+        return extra_path;
+    }
+
     if (process.platform === 'darwin') {
         
         return path.join(__dirname, "../", "/temp/");//return osx library path
