@@ -46,7 +46,7 @@ module.exports.cwebp = (input_image,output_image,option) => {
 
 const query = `${option} "${input_image}" -o "${output_image}"`; //command to convert image 
 
-console.log(query);
+if(!query.includes('-quiet')) console.log(query);
 
 //enwebp() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -71,7 +71,7 @@ module.exports.dwebp = (input_image,output_image,option) => {
 
 const query = `"${input_image}" ${option} "${output_image}"`;//command to convert image  
 
-console.log(query);
+if(!query.includes('-quiet')) console.log(query);
 
 //dewebp() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
