@@ -38,15 +38,13 @@ module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
 };
 
 //now convert image to .webp format 
-module.exports.cwebp = (input_image,output_image,option) => {
+module.exports.cwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.jpeg, .pnp ....)
 //output_image: output image .webp 
 //option: options and quality,it should be given between 0 to 100
 
-const query = `${option} "${input_image}" -o "${output_image}"`; //command to convert image 
-
-console.log(query);
+const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`; //command to convert image 
 
 //enwebp() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -63,15 +61,14 @@ return new Promise((resolve, reject) => {
 /******************************************************* dwebp *****************************************************/
 
 //now convert .webp to other image format 
-module.exports.dwebp = (input_image,output_image,option) => {
+module.exports.dwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image .webp
 //output_image: output image(.jpeg, .pnp ....)
 //option: options and quality,it should be given between 0 to 100
 
-const query = `"${input_image}" ${option} "${output_image}"`;//command to convert image  
+const query = `"${input_image}" ${option} "${output_image}" "${logging}"`;//command to convert image  
 
-console.log(query);
 
 //dewebp() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -89,14 +86,14 @@ return new Promise((resolve, reject) => {
 /******************************************************* gif2webp *****************************************************/
 
 //now convert .gif image to .webp format 
-module.exports.gwebp = (input_image,output_image,option) => {
+module.exports.gwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.jpeg, .pnp ....)
 //output_image: /output image .webp 
 //option: options and quality,it should be given between 0 to 100
 
 
-const query = `${option} "${input_image}" -o "${output_image}"`;//command to convert image
+const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`;//command to convert image
 
 //gifwebp() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -114,14 +111,14 @@ return new Promise((resolve, reject) => {
 
 //%%%%%%%%%%% Add ICC profile,XMP metadata and EXIF metadata
 
-module.exports.webpmux_add = (input_image,output_image,icc_profile,option) => {
+module.exports.webpmux_add = (input_image,output_image,icc_profile,option,logging='-quiet') => {
 
 // input_image: input image(.webp)
 //output_image: output image .webp  
 //icc_profile: icc profile
 //option: get or set option (icc,xmp,exif)
 
-const query = `-set ${option} ${icc_profile} "${input_image}" -o "${output_image}"`;
+const query = `-set ${option} ${icc_profile} "${input_image}" -o "${output_image}" "${logging}"`;
 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -137,12 +134,12 @@ return new Promise((resolve, reject) => {
 
 //%%%%%%%%%%%%% Extract ICC profile,XMP metadata and EXIF metadata
 
-module.exports.webpmux_extract = (input_image,icc_profile,option) => {
+module.exports.webpmux_extract = (input_image,icc_profile,option,logging='-quiet') => {
 
 // input_image: input image(.webp) 
 //icc_profile: icc profile
 
-const query = `-get ${option} "${input_image}" -o ${icc_profile}`;
+const query = `-get ${option} "${input_image}" -o ${icc_profile} "${logging}"`;
 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -158,12 +155,12 @@ return new Promise((resolve, reject) => {
 
 //%%%%%%%% Strip ICC profile,XMP metadata and EXIF metadata 
 
-module.exports.webpmux_strip = (input_image,output_image,option) => {
+module.exports.webpmux_strip = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.webp) 
 //output_image: output image .webp
 
-const query = `-strip ${option} "${input_image}" -o "${output_image}"`;
+const query = `-strip ${option} "${input_image}" -o "${output_image}" "${logging}"`;
 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -179,7 +176,7 @@ return new Promise((resolve, reject) => {
 
 //%%%%%%%%%%% Create an animated WebP file from Webp images 
 
-module.exports.webpmux_animate = (input_images,output_image,loop,bgcolor) => {
+module.exports.webpmux_animate = (input_images,output_image,loop,bgcolor,logging='-quiet') => {
 
 // input_images: array of image(.webp) 
 //output_image: animatedimage .webp
@@ -193,9 +190,8 @@ let j=input_images.length;
 for (i = 1; i < j; i++) { 
     files=`${files} -frame "${input_images[i]["path"]}" ${input_images[i]["offset"]}`;
 }
-// console.log(files);
 
-const query = `${files} -loop ${loop} -bgcolor ${bgcolor} -o "${output_image}"`;
+const query = `${files} -loop ${loop} -bgcolor ${bgcolor} -o "${output_image}" "${logging}"`;
 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
@@ -211,13 +207,13 @@ return new Promise((resolve, reject) => {
 
 //%%%%%%%%%%%% Get the a frame from an animated WebP file
 
-module.exports.webpmux_getframe = (input_image,output_image,frame_number) => {
+module.exports.webpmux_getframe = (input_image,output_image,frame_number,logging='-quiet') => {
 
 // input_image: input image(.webp) 
 //output_image: output image .webp
 //frame_number: frame number
 
-const query = `-get frame ${frame_number} "${input_image}" -o "${output_image}"`;
+const query = `-get frame ${frame_number} "${input_image}" -o "${output_image}" "${logging}"`;
 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {

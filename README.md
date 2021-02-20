@@ -1,6 +1,6 @@
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
-[webp-converter v2.3.2](https://www.npmjs.com/package/webp-converter)
+[webp-converter v2.3.3](https://www.npmjs.com/package/webp-converter)
 
 A small [node.js](http://nodejs.org) library for converting any image to webp file format or converting webp image to any image file format.
 
@@ -17,7 +17,7 @@ For creating animated webp image using webp images, please read this documentati
 
 
 ## What's New 
-* buffer utils temp path issue fixed
+* logging options added
 
 # How to use
 
@@ -45,7 +45,7 @@ const webp=require('webp-converter');
 
 //cwebp(input,output,option)
 
-const result = webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80");
+const result = webp.cwebp("nodejs_logo.jpg","nodejs_logo.webp","-q 80",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -125,7 +125,7 @@ const webp=require('webp-converter');
 
 //dwebp(input,output,option)
 
-const result = webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o");
+const result = webp.dwebp("nodejs_logo.webp","nodejs_logo.jpg","-o",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -145,7 +145,7 @@ const webp=require('webp-converter');
 
 //gwebp(input,output,option)
 
-const result = webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80");
+const result = webp.gwebp("linux_logo.gif","linux_logo.webp","-q 80",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -169,7 +169,7 @@ const webp=require('webp-converter');
 
 //webpmux_add(input,output,option_profile,set_option)
 
-const result = webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc");
+const result = webp.webpmux_add("in.webp","icc_container.webp","image_profile.icc","icc",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -191,7 +191,7 @@ const webp=require('webp-converter');
 
 //webpmux_extract(input,output,option)
 
-const result = webp.webpmux_extract("anim_container.webp","image_profile.icc","icc");
+const result = webp.webpmux_extract("anim_container.webp","image_profile.icc","icc",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -213,7 +213,7 @@ const webp=require('webp-converter');
 
 //webpmux_strip(input,output,option)
 
-const result = webp.webpmux_strip("icc_container.webp","without_icc.webp","icc");
+const result = webp.webpmux_strip("icc_container.webp","without_icc.webp","icc",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -257,7 +257,7 @@ Background color of the canvas. Where: A, R, G and B are integers in the range 0
 const webp=require('webp-converter');
 
 let input=[{"path":"./frames/tmp-0.webp","offset":"+100"},{"path":"./frames/tmp-1.webp", "offset":"+100"},{"path":"./frames/tmp-2.webp","offset":"+100"}];
-const result = webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255");
+const result = webp.webpmux_animate(input,"anim_container.webp","10","255,255,255,255",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
@@ -275,7 +275,7 @@ const webp=require('webp-converter');
 
 //webpmux_getframe(input,ouput,frame number)
 
-const result = webp.webpmux_getframe("anim_container.webp","frame_2.webp","2");
+const result = webp.webpmux_getframe("anim_container.webp","frame_2.webp","2",logging="-v");
 result.then((response) => {
 	console.log(response);
   });
