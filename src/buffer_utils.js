@@ -15,7 +15,7 @@ function encode_image(filepath,type) {
         let base64 = buf.toString('base64');
         // console.log('Base64 ' + filepath + ': ' + base64);
         return base64;
-    }else{
+    } else {
         return buf
     }
   }
@@ -30,8 +30,6 @@ const base64_to_image = (base64str,path) =>{
     fs.writeFileSync(path, buf, function(error) {
         if (error) {
           throw error;
-        } else {
-          //console.log('File created from base64 string!');
         }
       });
     return true;
@@ -64,7 +62,7 @@ module.exports.base64str2webp = (base64str,image_type,option,extra_path) => {
   
           return webp_base64str
       });
-      }else{
+      } else {
         throw Error("Failed to convert base64str to webp");
       }
 }
