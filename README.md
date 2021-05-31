@@ -16,7 +16,8 @@ For converting gif image to webp, please read this documentation [gif2webp Conve
 For creating animated webp image using webp images, please read this documentation [webpmux Muxer](https://developers.google.com/speed/webp/docs/webpmux)
 
 
-## What's New 
+## What's New
+* Better error handling, fixes missing promise rejects. Removes console logging.
 * logging options added
 
 # How to use
