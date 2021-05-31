@@ -6,7 +6,7 @@ const gifwebp=require('./gwebp.js');//get gif2webp module(convert git image to w
 const webpmux=require('./webpmux.js');//get webpmux module(convert non animated webp images to animated webp)
 const buffer_utils = require('./buffer_utils.js');//get buffer utilities 
 
-//permission issue in Linux and macOS
+// Permission issue in Linux and MacOS
 module.exports.grant_permission = () => {
 
 const arr = [enwebp(), dewebp(), gifwebp(),webpmux()];
@@ -17,20 +17,20 @@ arr.forEach(exe_path => {
 
 };
 
-//convert base64 to webp base64
+// Convert base64 to webp base64
 module.exports.str2webpstr = (base64str,image_type,option,extra_path) => {
   // base64str of image
-  // base64str image type jpg,png ...
+  // base64str image type jpg, png ...
   //option: options and quality,it should be given between 0 to 100
   return buffer_utils.base64str2webp(base64str,image_type,option,extra_path).then(function(val) {
     return val
   });
 };
 
-//convert buffer to webp buffer
+// Convert buffer to webp buffer
 module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
   // buffer of image
-  // buffer image type jpg,png ...
+  // buffer image type jpg, png ...
   //option: options and quality,it should be given between 0 to 100
   return buffer_utils.buffer2webp(buffer,image_type,option,extra_path);
 };
@@ -38,9 +38,9 @@ module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
 //now convert image to .webp format 
 module.exports.cwebp = (input_image,output_image,option,logging='-quiet') => {
 
-// input_image: input image(.jpeg, .pnp ....)
-//output_image: output image .webp 
-//option: options and quality,it should be given between 0 to 100
+// input_image: input image(.jpeg, .png ...)
+// output_image: output image .webp 
+// option: options and quality,it should be given between 0 to 100
 
 const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`; //command to convert image 
 
@@ -61,12 +61,12 @@ return new Promise((resolve, reject) => {
 
 /******************************************************* dwebp *****************************************************/
 
-//now convert .webp to other image format 
+// Convert .webp to other image format 
 module.exports.dwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image .webp
-//output_image: output image(.jpeg, .pnp ....)
-//option: options and quality,it should be given between 0 to 100
+// output_image: output image(.jpeg, .png ...)
+// option: options and quality,it should be given between 0 to 100
 
 const query = `"${input_image}" ${option} "${output_image}" "${logging}"`;//command to convert image  
 
@@ -89,13 +89,12 @@ return new Promise((resolve, reject) => {
 
 /******************************************************* gif2webp *****************************************************/
 
-//now convert .gif image to .webp format 
+// Convert .gif image to .webp format 
 module.exports.gwebp = (input_image,output_image,option,logging='-quiet') => {
 
-// input_image: input image(.jpeg, .pnp ....)
-//output_image: /output image .webp 
-//option: options and quality,it should be given between 0 to 100
-
+// input_image: input image(.jpeg, .png ...)
+// output_image: /output image .webp 
+// option: options and quality,it should be given between 0 to 100
 
 const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`;//command to convert image
 
@@ -121,9 +120,9 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_add = (input_image,output_image,icc_profile,option,logging='-quiet') => {
 
 // input_image: input image(.webp)
-//output_image: output image .webp  
-//icc_profile: icc profile
-//option: get or set option (icc,xmp,exif)
+// output_image: output image .webp  
+// icc_profile: icc profile
+// option: get or set option (icc,xmp,exif)
 
 const query = `-set ${option} ${icc_profile} "${input_image}" -o "${output_image}" "${logging}"`;
 
@@ -147,7 +146,7 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_extract = (input_image,icc_profile,option,logging='-quiet') => {
 
 // input_image: input image(.webp) 
-//icc_profile: icc profile
+// icc_profile: icc profile
 
 const query = `-get ${option} "${input_image}" -o ${icc_profile} "${logging}"`;
 
@@ -171,7 +170,7 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_strip = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.webp) 
-//output_image: output image .webp
+// output_image: output image .webp
 
 const query = `-strip ${option} "${input_image}" -o "${output_image}" "${logging}"`;
 
@@ -195,9 +194,9 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_animate = (input_images,output_image,loop,bgcolor,logging='-quiet') => {
 
 // input_images: array of image(.webp) 
-//output_image: animatedimage .webp
-//loop:Loop the frames n number of times
-//bgcolor: Background color of the canvas
+// output_image: animatedimage .webp
+// loop:Loop the frames n number of times
+// bgcolor: Background color of the canvas
 
 let files=`-frame ${input_images[0]["path"]} ${input_images[0]["offset"]}`;
 
@@ -229,8 +228,8 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_getframe = (input_image,output_image,frame_number,logging='-quiet') => {
 
 // input_image: input image(.webp) 
-//output_image: output image .webp
-//frame_number: frame number
+// output_image: output image .webp
+// frame_number: frame number
 
 const query = `-get frame ${frame_number} "${input_image}" -o "${output_image}" "${logging}"`;
 
