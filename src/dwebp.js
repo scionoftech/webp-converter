@@ -15,11 +15,11 @@ const dwebp=function() {
         if (process.arch === 'x64') {
             return path.join(__dirname, "../", "\\bin\\libwebp_win64\\bin\\dwebp.exe");//return windows 64bit library path
         } else {
-            console.log('Unsupported platform:', process.platform, process.arch);//show unsupported platform message
+            throw Error('Unsupported platform:', process.platform, process.arch);//show unsupported platform message
         }
 
     } else {
-        console.log('Unsupported platform:', process.platform, process.arch);//show unsupported platform message 
+        throw Error('Unsupported platform:', process.platform, process.arch);//show unsupported platform message 
     }
 };
 

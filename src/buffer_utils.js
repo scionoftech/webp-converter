@@ -31,7 +31,7 @@ const base64_to_image = (base64str,path) =>{
         if (error) {
           throw error;
         } else {
-          console.log('File created from base64 string!');
+          //console.log('File created from base64 string!');
         }
       });
     return true;
@@ -65,7 +65,7 @@ module.exports.base64str2webp = (base64str,image_type,option,extra_path) => {
           return webp_base64str
       });
       }else{
-        console.log("Failed")
+        throw Error("Failed to convert base64str to webp");
       }
 }
 /**
@@ -89,17 +89,17 @@ module.exports.buffer2webp = (buffer,image_type,option,extra_path) => {
     let status = base64_to_image(base64str,input_file_path)
 
     if(status){
-    const result = webp.cwebp(input_file_path,webp_image_path,option);
-    return result.then((response) => {
+      const result = webp.cwebp(input_file_path,webp_image_path,option);
+      return result.then((response) => {
         let webp_buffer = encode_image(webp_image_path,"buffer")
 
         fs.unlinkSync(input_file_path);
         fs.unlinkSync(webp_image_path);
 
         return webp_buffer
-    });
-    }else{
-      console.log("Failed")
+      });
+    } else {
+      throw Error("Failed to convert buffer to webp buffer");
     }
     
 }

@@ -32,9 +32,7 @@ module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
   // buffer of image
   // buffer image type jpg,png ...
   //option: options and quality,it should be given between 0 to 100
-  return buffer_utils.buffer2webp(buffer,image_type,option,extra_path).then(function(val) {
-    return val
-  });
+  return buffer_utils.buffer2webp(buffer,image_type,option,extra_path);
 };
 
 //now convert image to .webp format 
@@ -51,9 +49,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${enwebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -75,9 +76,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${dewebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 
@@ -100,9 +104,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${gifwebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -125,9 +132,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -146,9 +156,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -167,9 +180,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -198,9 +214,12 @@ return new Promise((resolve, reject) => {
   //execute command 
   exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
   if (error) {
-   console.warn(error);
+    reject(error);
+  } else if (stderr){
+    reject(stderr);
+  } else {
+    resolve(stdout);
   }
-  resolve(stdout? stdout : stderr);
  });
 });
 };
@@ -218,11 +237,14 @@ const query = `-get frame ${frame_number} "${input_image}" -o "${output_image}" 
 //webpmux() return which platform webp library should be used for conversion
 return new Promise((resolve, reject) => {
   //execute command 
-exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
+  exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
+    if (error) {
+      reject(error);
+    } else if (stderr){
+      reject(stderr);
+    } else {
+      resolve(stdout);
+    }
+  });
 });
 };
