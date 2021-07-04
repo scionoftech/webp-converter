@@ -1,3 +1,6 @@
+### This repo is no longer supported.
+#### Thanks for all your support!
+
 [![webp-converter Logo](images/nlogo.gif)](https://www.npmjs.com/package/webp-converter)
 
 [webp-converter v2.3.3](https://www.npmjs.com/package/webp-converter)
