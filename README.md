@@ -1,5 +1,3 @@
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-
 ### This repo is no longer supported.
 #### Thanks for all your support!
 
