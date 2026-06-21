@@ -4,15 +4,35 @@ const enwebp=require('./cwebp.js');//get cwebp module(converts other image forma
 const dewebp=require('./dwebp.js');//get dwebp module(converts webp format to other image)
 const gifwebp=require('./gwebp.js');//get gif2webp module(convert git image to webp)
 const webpmux=require('./webpmux.js');//get webpmux module(convert non animated webp images to animated webp)
-const buffer_utils = require('./buffer_utils.js');//get buffer utilities 
+const buffer_utils = require('./buffer_utils.js');//get buffer utilities
+
+// Split a free-form options string (e.g. "-q 80") into separate argv tokens. Value
+// arguments (filenames, numbers) are passed as single argv elements and are NEVER
+// concatenated into a shell command line, so shell metacharacters in them are inert.
+const optionTokens = (opt) => String(opt == null ? '' : opt).trim().split(/\s+/).filter(Boolean);
+
+// Run a webp binary with a real argv array and NO shell. execFile passes each element
+// to the binary verbatim (spaces and metacharacters are literal), so a malicious file
+// name / option cannot inject commands. Replaces the previous
+// `execFile(bin, query.split(/\s+/), { shell: true })` which ran `sh -c "<bin> <args>"`
+// and was vulnerable to command injection (CWE-78).
+const runWebp = (binPath, args) =>
+  new Promise((resolve) => {
+    exec(binPath, args, (error, stdout, stderr) => {
+      if (error) {
+        console.warn(error);
+      }
+      resolve(stdout ? stdout : stderr);
+    });
+  });
 
 //permission issue in Linux and macOS
 module.exports.grant_permission = () => {
 
 const arr = [enwebp(), dewebp(), gifwebp(),webpmux()];
 
-arr.forEach(exe_path => { 
-  fs.chmodSync(exe_path, 0o755); 
+arr.forEach(exe_path => {
+  fs.chmodSync(exe_path, 0o755);
 });
 
 };
@@ -37,74 +57,48 @@ module.exports.buffer2webpbuffer = (buffer,image_type,option,extra_path) => {
   });
 };
 
-//now convert image to .webp format 
+//now convert image to .webp format
 module.exports.cwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.jpeg, .pnp ....)
-//output_image: output image .webp 
+//output_image: output image .webp
 //option: options and quality,it should be given between 0 to 100
 
-const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`; //command to convert image 
+const args = [...optionTokens(option), String(input_image), '-o', String(output_image), String(logging)];
 
 //enwebp() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${enwebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(enwebp(), args);
 };
 
 /******************************************************* dwebp *****************************************************/
 
-//now convert .webp to other image format 
+//now convert .webp to other image format
 module.exports.dwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image .webp
 //output_image: output image(.jpeg, .pnp ....)
 //option: options and quality,it should be given between 0 to 100
 
-const query = `"${input_image}" ${option} "${output_image}" "${logging}"`;//command to convert image  
-
+const args = [String(input_image), ...optionTokens(option), String(output_image), String(logging)];
 
 //dewebp() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${dewebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(dewebp(), args);
 
 };
 
 /******************************************************* gif2webp *****************************************************/
 
-//now convert .gif image to .webp format 
+//now convert .gif image to .webp format
 module.exports.gwebp = (input_image,output_image,option,logging='-quiet') => {
 
 // input_image: input image(.jpeg, .pnp ....)
-//output_image: /output image .webp 
+//output_image: /output image .webp
 //option: options and quality,it should be given between 0 to 100
 
-
-const query = `${option} "${input_image}" -o "${output_image}" "${logging}"`;//command to convert image
+const args = [...optionTokens(option), String(input_image), '-o', String(output_image), String(logging)];
 
 //gifwebp() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${gifwebp()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(gifwebp(), args);
 };
 
 /******************************************************* webpmux *****************************************************/
@@ -114,115 +108,71 @@ return new Promise((resolve, reject) => {
 module.exports.webpmux_add = (input_image,output_image,icc_profile,option,logging='-quiet') => {
 
 // input_image: input image(.webp)
-//output_image: output image .webp  
+//output_image: output image .webp
 //icc_profile: icc profile
 //option: get or set option (icc,xmp,exif)
 
-const query = `-set ${option} ${icc_profile} "${input_image}" -o "${output_image}" "${logging}"`;
+const args = ['-set', ...optionTokens(option), String(icc_profile), String(input_image), '-o', String(output_image), String(logging)];
 
 //webpmux() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(webpmux(), args);
 };
 
 //%%%%%%%%%%%%% Extract ICC profile,XMP metadata and EXIF metadata
 
 module.exports.webpmux_extract = (input_image,icc_profile,option,logging='-quiet') => {
 
-// input_image: input image(.webp) 
+// input_image: input image(.webp)
 //icc_profile: icc profile
 
-const query = `-get ${option} "${input_image}" -o ${icc_profile} "${logging}"`;
+const args = ['-get', ...optionTokens(option), String(input_image), '-o', String(icc_profile), String(logging)];
 
 //webpmux() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(webpmux(), args);
 };
 
-//%%%%%%%% Strip ICC profile,XMP metadata and EXIF metadata 
+//%%%%%%%% Strip ICC profile,XMP metadata and EXIF metadata
 
 module.exports.webpmux_strip = (input_image,output_image,option,logging='-quiet') => {
 
-// input_image: input image(.webp) 
+// input_image: input image(.webp)
 //output_image: output image .webp
 
-const query = `-strip ${option} "${input_image}" -o "${output_image}" "${logging}"`;
+const args = ['-strip', ...optionTokens(option), String(input_image), '-o', String(output_image), String(logging)];
 
 //webpmux() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(webpmux(), args);
 };
 
-//%%%%%%%%%%% Create an animated WebP file from Webp images 
+//%%%%%%%%%%% Create an animated WebP file from Webp images
 
 module.exports.webpmux_animate = (input_images,output_image,loop,bgcolor,logging='-quiet') => {
 
-// input_images: array of image(.webp) 
+// input_images: array of image(.webp)
 //output_image: animatedimage .webp
 //loop:Loop the frames n number of times
 //bgcolor: Background color of the canvas
 
-let files=`-frame ${input_images[0]["path"]} ${input_images[0]["offset"]}`;
-
-let j=input_images.length;
-
-for (i = 1; i < j; i++) { 
-    files=`${files} -frame "${input_images[i]["path"]}" ${input_images[i]["offset"]}`;
+const args = [];
+for (let i = 0; i < input_images.length; i++) {
+    args.push('-frame', String(input_images[i]["path"]), String(input_images[i]["offset"]));
 }
-
-const query = `${files} -loop ${loop} -bgcolor ${bgcolor} -o "${output_image}" "${logging}"`;
+args.push('-loop', String(loop), '-bgcolor', String(bgcolor), '-o', String(output_image), String(logging));
 
 //webpmux() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-  exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(webpmux(), args);
 };
 
 //%%%%%%%%%%%% Get the a frame from an animated WebP file
 
 module.exports.webpmux_getframe = (input_image,output_image,frame_number,logging='-quiet') => {
 
-// input_image: input image(.webp) 
+// input_image: input image(.webp)
 //output_image: output image .webp
 //frame_number: frame number
 
-const query = `-get frame ${frame_number} "${input_image}" -o "${output_image}" "${logging}"`;
+const args = ['-get', 'frame', String(frame_number), String(input_image), '-o', String(output_image), String(logging)];
 
 //webpmux() return which platform webp library should be used for conversion
-return new Promise((resolve, reject) => {
-  //execute command 
-exec(`"${webpmux()}"`,query.split(/\s+/),{ shell: true }, (error, stdout, stderr) => {
-  if (error) {
-   console.warn(error);
-  }
-  resolve(stdout? stdout : stderr);
- });
-});
+return runWebp(webpmux(), args);
 };
