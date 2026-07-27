@@ -9,3 +9,4 @@ coverage
 examples/output/*
 !examples/output/.gitkeep
 *.tgz
+.README.github.bak
