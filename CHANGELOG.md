@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.1
+
+Docs and tooling only — no runtime code changes.
+
+- Fix broken banner image and doc/example links on the npm package page: the
+  published README now uses absolute GitHub URLs (npm does not resolve
+  repo-relative links). The GitHub README keeps relative links.
+- Bump `vitest` to 3.2.6 (dev only), which also clears the dev-toolchain audit
+  advisories.
+
 ## 3.0.0
 
 Major modernization release. The public API (function names and argument order)
