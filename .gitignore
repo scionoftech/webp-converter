@@ -1,1 +1,11 @@
-/node_modules
+node_modules
+dist
+temp
+*.log
+.DS_Store
+coverage
+
+# example run artifacts
+examples/output/*
+!examples/output/.gitkeep
+*.tgz

@@ -1,0 +1,135 @@
+4mIMG2WEBP24m(1)                 General Commands Manual                4mIMG2WEBP24m(1)
+
+1mNAME0m
+       img2webp - create animated WebP file from a sequence of input images.
+
+1mSYNOPSIS0m
+       1mimg2webp 22m[file_options] [[frame_options] frame_file]... [-o webp_file]
+       1mimg2webp argument_file_name0m
+
+1mDESCRIPTION0m
+       This manual page documents the 1mimg2webp 22mcommand.
+
+       1mimg2webp  22mcompresses  a sequence of images using the animated WebP for-
+       mat.  Input images can either be PNG, JPEG, TIFF or WebP.  If a  single
+       file  name (not starting with the character '-') is supplied as the ar-
+       gument, the command line arguments are  actually  tokenized  from  this
+       file.   This allows for easy scripting or using a large number of argu-
+       ments.
+
+1mFILE-LEVEL OPTIONS0m
+       The file-level options are applied at the beginning of the  compression
+       process, before the input frames are read.
+
+       1m-o 4m22mstring0m
+              Specify the name of the output WebP file.
+
+       1m-min_size0m
+              Encode  images to achieve smallest size. This disables key frame
+              insertion and picks the parameters  resulting  in  the  smallest
+              output  for each frame. It uses lossless compression by default,
+              but can be combined with -q, -m, -lossy or -mixed options.
+
+       1m-kmin 4m22mint0m
+
+       1m-kmax 4m22mint0m
+              Specify the minimum and maximum distance between consecutive key
+              frames (independently decodable frames) in the output animation.
+              The tool will insert some key frames into the  output  animation
+              as needed so that this criteria is satisfied.
+              1m-mixed 22mMixed compression mode: optimize compression of the image
+              by  picking  either lossy or lossless compression for each frame
+              heuristically. This global  option  disables  the  local  option
+              1m-lossy 22mand 1m-lossless 22m.
+
+       1m-near_lossless 4m22mint0m
+              Specify the level of near-lossless image preprocessing. This op-
+              tion adjusts pixel values to help compressibility, but has mini-
+              mal  impact on the visual quality. It triggers lossless compres-
+              sion mode automatically. The range is 0 (maximum  preprocessing)
+              to  100  (no  preprocessing,  the default). The typical value is
+              around 60. Note that lossy with 1m-q 100 22mcan at times yield better
+              results.
+
+       1m-sharp_yuv0m
+              Use more accurate and sharper  RGB->YUV  conversion.  Note  that
+              this  process is slower than the default 'fast' RGB->YUV conver-
+              sion.
+
+       1m-loop 4m22mint0m
+              Specifies the number of times the animation should  loop.  Using
+              '0' means 'loop indefinitely'.
+
+       1m-v     22mBe more verbose.
+
+       1m-h, -help0m
+              A short usage summary.
+
+       1m-version0m
+              Print the version numbers of the relevant libraries used.
+
+
+1mPER-FRAME OPTIONS0m
+       The per-frame options are applied for the images following as arguments
+       in the command line. They can be modified any number of times preceding
+       each particular input image.
+
+       1m-d 4m22mint24m Specify the image duration in milliseconds.
+
+       1m-lossless, -lossy0m
+              Compress  the  next image(s) using lossless or lossy compression
+              mode. The default mode is lossless.
+
+       1m-q 4m22mfloat0m
+              Specify the compression factor between 0 and 100. The default is
+              75.
+
+       1m-m 4m22mint24m Specify the compression method to use. This  parameter  controls
+              the  trade  off  between  encoding speed and the compressed file
+              size and quality.  Possible values range from 0  to  6.  Default
+              value is 4.  When higher values are used, the encoder will spend
+              more  time  inspecting additional encoding possibilities and de-
+              cide on the quality gain.  Lower value can result in faster pro-
+              cessing time at the expense of larger file size and  lower  com-
+              pression quality.
+
+       1m-exact, -noexact0m
+              Preserve or alter RGB values in transparent area. The default is
+              1m-noexact22m, to help compressibility. Note 1m-noexact 22mmay cause arti-
+              facts in frames compressed with 1m-lossy22m.
+
+
+1mEXIT STATUS0m
+       If  there  were  no  problems during execution, 1mimg2webp 22mexits with the
+       value of the C constant 1mEXIT_SUCCESS22m. This is usually zero.
+
+       If an error occurs, 1mimg2webp 22mexits with the value  of  the  C  constant
+       1mEXIT_FAILURE22m. This is usually one.
+
+
+1mEXAMPLE0m
+       img2webp -loop 2 in0.png -lossy in1.jpg -d 80 in2.tiff -o out.webp
+
+
+1mAUTHORS0m
+       1mimg2webp 22mis a part of libwebp and was written by the WebP team.
+       The   latest  source  tree  is  available  at  https://chromium.google-
+       source.com/webm/libwebp
+
+       This  manual  page  was  written  by  Pascal   Massimino   <pascal.mas-
+       simino@gmail.com>, for the Debian project (and may be used by others).
+
+
+1mREPORTING BUGS0m
+       Please  report  all  bugs to the issue tracker: https://issues.webmpro-
+       ject.org
+       Patches welcome! See this page  to  get  started:  https://www.webmpro-
+       ject.org/code/contribute/submitting-patches/
+
+
+1mSEE ALSO0m
+       1mwebpmux22m(1), 1mgif2webp22m(1)
+       Please  refer  to  https://developers.google.com/speed/webp/  for addi-
+       tional information.
+
+                               November 26, 2024                   4mIMG2WEBP24m(1)
