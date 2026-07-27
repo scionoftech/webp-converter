@@ -1,11 +1,30 @@
 {
   "name": "webp-converter",
-  "version": "2.3.3",
+  "version": "3.0.0",
   "description": "A small node.js library for converting any image to webp file format or converting webp image to any image file format.",
-  "main": "src/webpconverter.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,22 +40,19 @@
     "webpmux"
   ],
   "files": [
+    "dist",
+    "bin",
+    "images/banner.png",
     "LICENSE",
-    "README.md",
-    "app.js",
-    "webpconverter.js",
-    "src/buffer_utils.js",
-    "src/temp_path.js",
-    "src/cwebp.js",
-    "src/dwebp.js",
-    "src/gwebp.js",
-    "src/webpmux.js",
-    "bin/",
-    "images/",
-    "temp/"
+    "README.md"
   ],
-  "dependencies": {
-    "uuid": "^8.3.2"
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "prettier": "^3.3.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
   },
   "author": "scionoftech",
   "license": "MIT"

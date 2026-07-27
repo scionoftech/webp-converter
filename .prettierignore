@@ -1,0 +1,8 @@
+bin
+dist
+node_modules
+coverage
+temp
+frames
+*.min.js
+examples/output

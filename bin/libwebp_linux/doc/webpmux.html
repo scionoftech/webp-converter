@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Dec 26 17:01:13 2019 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Wed Jul  9 13:53:58 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,9 +24,18 @@
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#OPTIONS">OPTIONS</a><br>
-<a href="#BUGS">BUGS</a><br>
+<a href="#GET_OPTIONS (-get):">GET_OPTIONS (-get):</a><br>
+<a href="#SET_OPTIONS (-set)">SET_OPTIONS (-set)</a><br>
+<a href="#STRIP_OPTIONS (-strip)">STRIP_OPTIONS (-strip)</a><br>
+<a href="#DURATION_OPTIONS (-duration)">DURATION_OPTIONS (-duration)</a><br>
+<a href="#FRAME_OPTIONS (-frame)">FRAME_OPTIONS (-frame)</a><br>
+<a href="#INPUT">INPUT</a><br>
+<a href="#OUTPUT (-o)">OUTPUT (-o)</a><br>
+<a href="#Note:">Note:</a><br>
+<a href="#EXIT STATUS">EXIT STATUS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHORS">AUTHORS</a><br>
+<a href="#REPORTING BUGS">REPORTING BUGS</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
 
 <hr>
@@ -37,17 +46,17 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">webpmux -
-create animated WebP files from non-animated WebP images,
-extract frames from animated WebP images, and manage
-XMP/EXIF metadata and ICC profile.</p>
+<p style="margin-left:1%; margin-top: 1em">webpmux - create
+animated WebP files from non-animated WebP images, extract
+frames from animated WebP images, and manage XMP/EXIF
+metadata and ICC profile.</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>webpmux
+<p style="margin-left:1%; margin-top: 1em"><b>webpmux
 -get</b> <i>GET_OPTIONS INPUT</i> <b>-o</b> <i>OUTPUT</i>
 <b><br>
 webpmux -set</b> <i>SET_OPTIONS INPUT</i> <b>-o</b>
@@ -57,10 +66,10 @@ webpmux -strip</b> <i>STRIP_OPTIONS INPUT</i> <b>-o</b>
 webpmux -frame</b> <i>FRAME_OPTIONS</i> <b>[ -frame ... ] [
 -loop</b> <i>LOOP_COUNT</i> <b>]</b></p>
 
-<p style="margin-left:23%;"><b>[ -bgcolor</b>
+<p style="margin-left:2%;"><b>[ -bgcolor</b>
 <i>BACKGROUND_COLOR</i> <b>] -o</b> <i>OUTPUT</i></p>
 
-<p style="margin-left:11%;"><b>webpmux -duration</b>
+<p style="margin-left:1%;"><b>webpmux -duration</b>
 <i>DURATION OPTIONS</i> <b>[ -duration ... ]</b>
 <i>INPUT</i> <b>-o</b> <i>OUTPUT</i> <b><br>
 webpmux -info</b> <i>INPUT</i> <b><br>
@@ -73,16 +82,16 @@ webpmux argument_file_name</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">This manual
-page documents the <b>webpmux</b> command.</p>
+<p style="margin-left:1%; margin-top: 1em">This manual page
+documents the <b>webpmux</b> command.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>webpmux</b>
+<p style="margin-left:1%; margin-top: 1em"><b>webpmux</b>
 can be used to create/extract from animated WebP files, as
 well as to add/extract/strip XMP/EXIF metadata and ICC
 profile. If a single file name (not starting with the
 character &rsquo;-&rsquo;) is supplied as the argument, the
 command line arguments are actually tokenized from this
-file. This allows for easy scripting or using large number
+file. This allows for easy scripting or using a large number
 of arguments.</p>
 
 <h2>OPTIONS
@@ -90,137 +99,153 @@ of arguments.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>GET_OPTIONS
-(-get):</b></p>
+<h3>GET_OPTIONS (-get):
+<a name="GET_OPTIONS (-get):"></a>
+</h3>
+
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
-<p><b>icc</b></p></td>
-<td width="5%"></td>
-<td width="27%">
+<p style="margin-top: 1em"><b>icc</b></p></td>
+<td width="2%">
 
 
-<p>Get ICC profile.</p></td>
-<td width="51%">
+<p style="margin-top: 1em">Get ICC profile.</p></td>
+<td width="97%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
 <p><b>exif</b></p></td>
-<td width="5%"></td>
-<td width="27%">
+<td width="2%">
 
 
 <p>Get EXIF metadata.</p></td>
-<td width="51%">
+<td width="97%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
 <p><b>xmp</b></p></td>
-<td width="5%"></td>
-<td width="27%">
+<td width="2%">
 
 
 <p>Get XMP metadata.</p></td>
-<td width="51%">
+<td width="97%">
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>frame</b> <i>n</i></p>
+<p style="margin-left:1%;"><b>frame</b> <i>n</i></p>
 
-<p style="margin-left:22%;">Get nth frame from an animated
+<p style="margin-left:1%;">Get nth frame from an animated
 image. (n = 0 has a special meaning: last frame).</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>SET_OPTIONS
-(-set) <br>
+<h3>SET_OPTIONS (-set)
+<a name="SET_OPTIONS (-set)"></a>
+</h3>
+
+
+<p style="margin-left:1%; margin-top: 1em"><b>loop</b>
+<i>loop_count</i></p>
+
+<p style="margin-left:1%;">Set loop count on an animated
+file.</p>
+
+<p style="margin-left:1%; margin-top: 1em">Where:
+&rsquo;loop_count&rsquo; must be in range [0, 65535].
+<b><br>
+bgcolor</b> <i>A,R,G,B</i></p>
+
+<p style="margin-left:1%;">Set the background color of the
+canvas on an animated file.</p>
+
+<p style="margin-left:1%; margin-top: 1em">where:
+&rsquo;A&rsquo;, &rsquo;R&rsquo;, &rsquo;G&rsquo; and
+&rsquo;B&rsquo; are integers in the range 0 to 255
+specifying the Alpha, Red, Green and Blue component values
+respectively. <b><br>
 icc</b> <i>file.icc</i></p>
 
-<p style="margin-left:22%;">Set ICC profile.</p>
+<p style="margin-left:1%;">Set ICC profile.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Where:
+<p style="margin-left:1%; margin-top: 1em">Where:
 &rsquo;file.icc&rsquo; contains the ICC profile to be set.
 <b><br>
 exif</b> <i>file.exif</i></p>
 
-<p style="margin-left:22%;">Set EXIF metadata.</p>
+<p style="margin-left:1%;">Set EXIF metadata.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Where:
+<p style="margin-left:1%; margin-top: 1em">Where:
 &rsquo;file.exif&rsquo; contains the EXIF metadata to be
 set. <b><br>
 xmp</b> <i>file.xmp</i></p>
 
-<p style="margin-left:22%;">Set XMP metadata.</p>
+<p style="margin-left:1%;">Set XMP metadata.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Where:
+<p style="margin-left:1%; margin-top: 1em">Where:
 &rsquo;file.xmp&rsquo; contains the XMP metadata to be
 set.</p>
 
+<h3>STRIP_OPTIONS (-strip)
+<a name="STRIP_OPTIONS (-strip)"></a>
+</h3>
 
-<p style="margin-left:11%; margin-top: 1em"><b>STRIP_OPTIONS
-(-strip)</b></p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
-<p><b>icc</b></p></td>
-<td width="5%"></td>
-<td width="30%">
+<p style="margin-top: 1em"><b>icc</b></p></td>
+<td width="2%">
 
 
-<p>Strip ICC profile.</p></td>
-<td width="48%">
+<p style="margin-top: 1em">Strip ICC profile.</p></td>
+<td width="97%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
 <p><b>exif</b></p></td>
-<td width="5%"></td>
-<td width="30%">
+<td width="2%">
 
 
 <p>Strip EXIF metadata.</p></td>
-<td width="48%">
+<td width="97%">
 </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="6%">
+<td width="1%"></td>
 
 
 <p><b>xmp</b></p></td>
-<td width="5%"></td>
-<td width="30%">
+<td width="2%">
 
 
 <p>Strip XMP metadata.</p></td>
-<td width="48%">
+<td width="97%">
 </td></tr>
 </table>
 
+<h3>DURATION_OPTIONS (-duration)
+<a name="DURATION_OPTIONS (-duration)"></a>
+</h3>
 
-<p style="margin-left:11%; margin-top: 1em"><b>DURATION_OPTIONS
-(-duration)</b> <br>
-Amend the duration of a specific interval of frames. This
-option is only effective on animated WebP and has no effect
-on a single-frame file. <i><br>
+
+<p style="margin-left:1%; margin-top: 1em">Amend the
+duration of a specific interval of frames. This option is
+only effective on animated WebP and has no effect on a
+single-frame file. <i><br>
 duration[,start[,end]]</i></p>
 
-<p style="margin-left:22%;">Where: <b><br>
+<p style="margin-left:1%;">Where: <b><br>
 duration</b> is the duration for the interval in
 milliseconds (mandatory). Must be non-negative. <b><br>
 start</b> is the starting frame index of the interval
@@ -228,10 +253,10 @@ start</b> is the starting frame index of the interval
 end</b> is the ending frame index (inclusive) of the
 interval (optional).</p>
 
-<p style="margin-left:11%;">The three typical usages of
-this option are:</p>
+<p style="margin-left:1%;">The three typical usages of this
+option are:</p>
 
-<p style="margin-left:22%;"><b>-duration d</b> <br>
+<p style="margin-left:1%;"><b>-duration d</b> <br>
 set the duration to &rsquo;d&rsquo; for the whole animation.
 <b><br>
 -duration d,f</b> <br>
@@ -239,27 +264,29 @@ set the duration of frame &rsquo;f&rsquo; to
 &rsquo;d&rsquo;. <b><br>
 -duration d,start,end</b> <br>
 set the duration to &rsquo;d&rsquo; for the whole
-[start,end] interval.</p>
-
-<p style="margin-left:22%; margin-top: 1em">Note that the
-frames outside of the [start, end] interval will <br>
+[start,end] interval. <br>
+Note that the frames outside of the [start, end] interval
+will <br>
 remain untouched. <br>
 The &rsquo;end&rsquo; value &rsquo;0&rsquo; has the special
 meaning &rsquo;last frame of the animation&rsquo;.</p>
 
-<p style="margin-left:11%;"><i>Reminder:</i></p>
+<p style="margin-left:1%;"><i>Reminder:</i></p>
 
-<p style="margin-left:22%;">frame indexing starts at
+<p style="margin-left:1%;">frame indexing starts at
 &rsquo;1&rsquo;.</p>
 
+<h3>FRAME_OPTIONS (-frame)
+<a name="FRAME_OPTIONS (-frame)"></a>
+</h3>
 
-<p style="margin-left:11%; margin-top: 1em"><b>FRAME_OPTIONS
-(-frame)</b> <br>
-Create an animated WebP file from multiple (non-animated)
-WebP images. <i><br>
+
+<p style="margin-left:1%; margin-top: 1em">Create an
+animated WebP file from multiple (non-animated) WebP images.
+<i><br>
 file_i +di[+xi+yi[+mi[bi]]]</i></p>
 
-<p style="margin-left:22%;">Where: &rsquo;file_i&rsquo; is
+<p style="margin-left:1%;">Where: &rsquo;file_i&rsquo; is
 the i&rsquo;th frame (WebP format),
 &rsquo;xi&rsquo;,&rsquo;yi&rsquo; specify the image offset
 for this frame, &rsquo;di&rsquo; is the pause duration
@@ -274,109 +301,123 @@ omitted and will default to 0 (NONE). Finally, if
 &rsquo;xi&rsquo; and &rsquo;yi&rsquo; can be omitted and
 will default to +0+0.</p>
 
-<p style="margin-left:11%;"><b>-loop</b> <i>n</i></p>
+<p style="margin-left:1%;"><b>-loop</b> <i>n</i></p>
 
-<p style="margin-left:22%;">Loop the frames n number of
+<p style="margin-left:1%;">Loop the frames n number of
 times. 0 indicates the frames should loop forever. Valid
 range is 0 to 65535 [Default: 0 (infinite)].</p>
 
-<p style="margin-left:11%;"><b>-bgcolor</b>
+<p style="margin-left:1%;"><b>-bgcolor</b>
 <i>A,R,G,B</i></p>
 
-<p style="margin-left:22%;">Background color of the canvas.
+<p style="margin-left:1%;">Background color of the canvas.
 <br>
 where: &rsquo;A&rsquo;, &rsquo;R&rsquo;, &rsquo;G&rsquo; and
 &rsquo;B&rsquo; are integers in the range 0 to 255
 specifying the Alpha, Red, Green and Blue component values
 respectively [Default: 255,255,255,255].</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>INPUT</b>
-<br>
-Input file in WebP format.</p>
+<h3>INPUT
+<a name="INPUT"></a>
+</h3>
 
-<p style="margin-left:11%; margin-top: 1em"><b>OUTPUT
-(-o)</b> <br>
-Output file in WebP format.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
-<br>
-The nature of EXIF, XMP and ICC data is not checked and is
-assumed to <br>
+<p style="margin-left:1%; margin-top: 1em">Input file in
+WebP format.</p>
+
+<h3>OUTPUT (-o)
+<a name="OUTPUT (-o)"></a>
+</h3>
+
+
+<p style="margin-left:1%; margin-top: 1em">Output file in
+WebP format.</p>
+
+<h3>Note:
+<a name="Note:"></a>
+</h3>
+
+
+<p style="margin-left:1%; margin-top: 1em">The nature of
+EXIF, XMP and ICC data is not checked and is assumed to <br>
 be valid.</p>
 
-<h2>BUGS
-<a name="BUGS"></a>
+<h2>EXIT STATUS
+<a name="EXIT STATUS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Please report
-all bugs to the issue tracker:
-https://bugs.chromium.org/p/webp <br>
-Patches welcome! See this page to get started:
-http://www.webmproject.org/code/contribute/submitting-patches/</p>
+<p style="margin-left:1%; margin-top: 1em">If there were no
+problems during execution, <b>webpmux</b> exits with the
+value of the C constant <b>EXIT_SUCCESS</b>. This is usually
+zero.</p>
+
+<p style="margin-left:1%; margin-top: 1em">If an error
+occurs, <b>webpmux</b> exits with the value of the C
+constant <b>EXIT_FAILURE</b>. This is usually one.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Add ICC
-profile: <br>
+<p style="margin-left:1%; margin-top: 1em">Add ICC profile:
+<br>
 webpmux -set icc image_profile.icc in.webp -o
 icc_container.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Extract ICC
+<p style="margin-left:1%; margin-top: 1em">Extract ICC
 profile: <br>
 webpmux -get icc icc_container.webp -o image_profile.icc</p>
 
-<p style="margin-left:11%; margin-top: 1em">Strip ICC
+<p style="margin-left:1%; margin-top: 1em">Strip ICC
 profile: <br>
 webpmux -strip icc icc_container.webp -o
 without_icc.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Add XMP
+<p style="margin-left:1%; margin-top: 1em">Add XMP
 metadata: <br>
 webpmux -set xmp image_metadata.xmp in.webp -o
 xmp_container.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Extract XMP
+<p style="margin-left:1%; margin-top: 1em">Extract XMP
 metadata: <br>
 webpmux -get xmp xmp_container.webp -o
 image_metadata.xmp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Strip XMP
+<p style="margin-left:1%; margin-top: 1em">Strip XMP
 metadata: <br>
 webpmux -strip xmp xmp_container.webp -o
 without_xmp.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Add EXIF
+<p style="margin-left:1%; margin-top: 1em">Add EXIF
 metadata: <br>
 webpmux -set exif image_metadata.exif in.webp -o
 exif_container.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Extract EXIF
+<p style="margin-left:1%; margin-top: 1em">Extract EXIF
 metadata: <br>
 webpmux -get exif exif_container.webp -o
 image_metadata.exif</p>
 
-<p style="margin-left:11%; margin-top: 1em">Strip EXIF
+<p style="margin-left:1%; margin-top: 1em">Strip EXIF
 metadata: <br>
 webpmux -strip exif exif_container.webp -o
 without_exif.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Create an
+<p style="margin-left:1%; margin-top: 1em">Create an
 animated WebP file from 3 (non-animated) WebP images: <br>
 webpmux -frame 1.webp +100 -frame 2.webp +100+50+50</p>
 
-<p style="margin-left:23%;">-frame 3.webp +100+50+50+1+b
+<p style="margin-left:2%;">-frame 3.webp +100+50+50+1+b
 -loop 10 -bgcolor 255,255,255,255 <br>
 -o anim_container.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Get the 2nd
+<p style="margin-left:1%; margin-top: 1em">Get the 2nd
 frame from an animated WebP file: <br>
 webpmux -get frame 2 anim_container.webp -o frame_2.webp</p>
 
-<p style="margin-left:11%; margin-top: 1em">Using
+<p style="margin-left:1%; margin-top: 1em">Using
 -get/-set/-strip with input file name starting with
 &rsquo;-&rsquo;: <br>
 webpmux -set icc image_profile.icc -o icc_container.webp --
@@ -391,15 +432,25 @@ webpmux -strip icc -o without_icc.webp --
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>webpmux</b>
+<p style="margin-left:1%; margin-top: 1em"><b>webpmux</b>
 is a part of libwebp and was written by the WebP team. <br>
 The latest source tree is available at
 https://chromium.googlesource.com/webm/libwebp</p>
 
-<p style="margin-left:11%; margin-top: 1em">This manual
-page was written by Vikas Arora
-&lt;vikaas.arora@gmail.com&gt;, for the Debian project (and
-may be used by others).</p>
+<p style="margin-left:1%; margin-top: 1em">This manual page
+was written by Vikas Arora &lt;vikaas.arora@gmail.com&gt;,
+for the Debian project (and may be used by others).</p>
+
+<h2>REPORTING BUGS
+<a name="REPORTING BUGS"></a>
+</h2>
+
+
+<p style="margin-left:1%; margin-top: 1em">Please report
+all bugs to the issue tracker:
+https://issues.webmproject.org <br>
+Patches welcome! See this page to get started:
+https://www.webmproject.org/code/contribute/submitting-patches/</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
@@ -407,10 +458,10 @@ may be used by others).</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>cwebp</b>(1),
+<p style="margin-left:1%; margin-top: 1em"><b>cwebp</b>(1),
 <b>dwebp</b>(1), <b>gif2webp</b>(1) <br>
-Please refer to http://developers.google.com/speed/webp/ for
-additional information.</p>
+Please refer to https://developers.google.com/speed/webp/
+for additional information.</p>
 <hr>
 </body>
 </html>

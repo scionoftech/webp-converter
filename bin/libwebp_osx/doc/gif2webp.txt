@@ -1,73 +1,85 @@
-GIF2WEBP(1)                                                        GIF2WEBP(1)
+4mGIF2WEBP24m(1)                 General Commands Manual                4mGIF2WEBP24m(1)
 
-
-
-NAME
+1mNAME0m
        gif2webp - Convert a GIF image to WebP
 
-SYNOPSIS
-       gif2webp [options] input_file.gif -o output_file.webp
+1mSYNOPSIS0m
+       1mgif2webp 22m[4moptions24m] 4minput_file.gif24m 4m-o24m 4moutput_file.webp0m
 
-DESCRIPTION
-       This manual page documents the gif2webp command.
+1mDESCRIPTION0m
+       This manual page documents the 1mgif2webp 22mcommand.
 
-       gif2webp converts a GIF image to a WebP image.
+       1mgif2webp 22mconverts a GIF image to a WebP image.
 
-OPTIONS
+1mOPTIONS0m
        The basic options are:
 
-       -o string
-              Specify  the  name of the output WebP file. If omitted, gif2webp
+       1m-o 4m22mstring0m
+              Specify  the  name of the output WebP file. If omitted, 1mgif2webp0m
               will perform conversion but only report statistics.   Using  "-"
               as output name will direct output to 'stdout'.
 
-       -- string
+       1m-- 4m22mstring0m
               Explicitly  specify the input file. This option is useful if the
-              input file starts with an '-' for  instance.  This  option  must
-              appear  last.   Any  other options afterward will be ignored. If
-              the input file is "-", the data will be read from stdin  instead
-              of a file.
+              input file starts with an '-' for instance. This option must ap-
+              pear 1mlast22m.  Any other options afterward will be ignored. If  the
+              input file is "-", the data will be read from 4mstdin24m instead of a
+              file.
 
-       -h, -help
+       1m-h, -help0m
               Usage information.
 
-       -version
+       1m-version0m
               Print the version number (as major.minor.revision) and exit.
 
-       -lossy Encode the image using lossy compression.
+       1m-lossy 22mEncode the image using lossy compression.
 
-       -mixed Mixed  compression  mode:  optimize  compression of the image by
+       1m-mixed 22mMixed  compression  mode:  optimize  compression of the image by
               picking either lossy or  lossless  compression  for  each  frame
               heuristically.
 
-       -q float
-              Specify  the  compression  factor for RGB channels between 0 and
+       1m-near_lossless 4m22mint0m
+              Specify the level of near-lossless image preprocessing. This op-
+              tion adjusts pixel values to help compressibility, but has mini-
+              mal  impact on the visual quality. It triggers lossless compres-
+              sion mode automatically. The range is 0 (maximum  preprocessing)
+              to  100  (no  preprocessing,  the default). The typical value is
+              around 60. Note that lossy with 1m-q 100 22mcan at times yield better
+              results.
+
+       1m-sharp_yuv0m
+              Use more accurate and sharper  RGB->YUV  conversion.  Note  that
+              this  process is slower than the default 'fast' RGB->YUV conver-
+              sion.
+
+       1m-q 4m22mfloat0m
+              Specify the compression factor for RGB channels  between  0  and
               100. The default is 75.
-              In case  of  lossless  compression  (default),  a  small  factor
-              enables  faster  compression  speed, but produces a larger file.
-              Maximum compression is achieved by using a value of 100.
+              In  case  of  lossless compression (default), a small factor en-
+              ables faster compression speed, but produces a larger file. Max-
+              imum compression is achieved by using a value of 100.
               In case of lossy compression (specified by the -lossy option), a
-              small  factor  produces  a smaller file with lower quality. Best
+              small factor produces a smaller file with  lower  quality.  Best
               quality is achieved by using a value of 100.
 
-       -m int Specify the compression method to use. This  parameter  controls
-              the  trade  off  between  encoding speed and the compressed file
-              size and quality.  Possible values range from 0  to  6.  Default
+       1m-m 4m22mint24m Specify  the  compression method to use. This parameter controls
+              the trade off between encoding speed  and  the  compressed  file
+              size  and  quality.   Possible values range from 0 to 6. Default
               value is 4.  When higher values are used, the encoder will spend
-              more  time  inspecting  additional  encoding  possibilities  and
-              decide  on  the  quality gain.  Lower value can result is faster
-              processing time at the expense of larger  file  size  and  lower
-              compression quality.
+              more time inspecting additional encoding possibilities  and  de-
+              cide on the quality gain.  Lower value can result is faster pro-
+              cessing  time  at the expense of larger file size and lower com-
+              pression quality.
 
-       -min_size
-              Encode  image  to achieve smallest size. This disables key frame
-              insertion and picks the dispose  method  resulting  in  smallest
+       1m-min_size0m
+              Encode image to achieve smallest size. This disables  key  frame
+              insertion and picks the dispose method resulting in the smallest
               output  for each frame. It uses lossless compression by default,
               but can be combined with -q, -m, -lossy or -mixed options.
 
-       -kmin int
+       1m-kmin 4m22mint0m
 
-       -kmax int
+       1m-kmax 4m22mint0m
               Specify the minimum and maximum distance between consecutive key
               frames (independently decodable frames) in the output animation.
               The tool will insert some key frames into the  output  animation
@@ -81,50 +93,51 @@ OPTIONS
               These two options are relevant only  for  animated  images  with
               large number of frames (>50).
               When lower values are used, more frames will be converted to key
-              frames. This may lead to smaller number of  frames  required  to
-              decode  a  frame on average, thereby improving the decoding per-
-              formance. But this may  lead  to  slightly  bigger  file  sizes.
-              Higher  values  may  lead  to  worse  decoding  performance, but
+              frames.  This  may  lead to smaller number of frames required to
+              decode a frame on average, thereby improving the  decoding  per-
+              formance.  But  this  may  lead  to  slightly bigger file sizes.
+              Higher values  may  lead  to  worse  decoding  performance,  but
               smaller file sizes.
               Some restrictions:
               (i) kmin < kmax,
               (ii) kmin >= kmax / 2 + 1 and
               (iii) kmax - kmin <= 30.
-              If any of these restrictions are not met, they will be  enforced
+              If  any of these restrictions are not met, they will be enforced
               automatically.
 
-       -metadata string
+       1m-metadata 4m22mstring0m
               A comma separated list of metadata to copy from the input to the
-              output if present.  Valid values:  all,  none,  icc,  xmp.   The
-              default is xmp.
+              output if present.  Valid values: 1mall22m, 1mnone22m, 1micc22m, 1mxmp22m.  The  de-
+              fault is 1mxmp22m.
 
-       -f int For  lossy encoding only (specified by the -lossy option). Spec-
+       1m-f 4m22mint24m For  lossy encoding only (specified by the -lossy option). Spec-
               ify the strength of the deblocking filter, between 0 (no filter-
-              ing)  and  100  (maximum filtering).  A value of 0 will turn off
-              any filtering. Higher value will increase the  strength  of  the
+              ing) and 100 (maximum filtering).  A value of 0  will  turn  off
+              any  filtering.  Higher  value will increase the strength of the
               filtering process applied after decoding the picture. The higher
               the value the smoother the picture will appear.  Typical  values
               are usually in the range of 20 to 50.
 
-       -mt    Use multi-threading for encoding, if possible.
+       1m-mt    22mUse multi-threading for encoding, if possible.
 
-       -loop_compatibility
+       1m-loop_compatibility0m
               If  enabled, handle the loop information in a compatible fashion
               for Chrome version prior to M62 (inclusive) and Firefox.
 
-       -v     Print extra information.
+       1m-v     22mPrint extra information.
 
-       -quiet Do not print anything.
-
-
-BUGS
-       Please    report     all     bugs     to     the     issue     tracker:
-       https://bugs.chromium.org/p/webp
-       Patches  welcome!  See  this  page  to get started: http://www.webmpro-
-       ject.org/code/contribute/submitting-patches/
+       1m-quiet 22mDo not print anything.
 
 
-EXAMPLES
+1mEXIT STATUS0m
+       If there were no problems during execution,  1mgif2webp  22mexits  with  the
+       value of the C constant 1mEXIT_SUCCESS22m. This is usually zero.
+
+       If  an  error  occurs,  1mgif2webp 22mexits with the value of the C constant
+       1mEXIT_FAILURE22m. This is usually one.
+
+
+1mEXAMPLES0m
        gif2webp picture.gif -o picture.webp
        gif2webp -q 70 picture.gif -o picture.webp
        gif2webp -lossy -m 3 picture.gif -o picture_lossy.webp
@@ -133,8 +146,8 @@ EXAMPLES
        cat picture.gif | gif2webp -o - -- - > output.webp
 
 
-AUTHORS
-       gif2webp is a part of libwebp and was written by the WebP team.
+1mAUTHORS0m
+       1mgif2webp 22mis a part of libwebp and was written by the WebP team.
        The  latest  source  tree  is  available  at   https://chromium.google-
        source.com/webm/libwebp
 
@@ -142,11 +155,16 @@ AUTHORS
        the Debian project (and may be used by others).
 
 
-SEE ALSO
-       cwebp(1), dwebp(1), webpmux(1)
-       Please refer to http://developers.google.com/speed/webp/ for additional
-       information.
+1mREPORTING BUGS0m
+       Please report all bugs to the  issue  tracker:  https://issues.webmpro-
+       ject.org
+       Patches  welcome!  See  this  page to get started: https://www.webmpro-
+       ject.org/code/contribute/submitting-patches/
 
 
+1mSEE ALSO0m
+       1mcwebp22m(1), 1mdwebp22m(1), 1mwebpmux22m(1)
+       Please refer  to  https://developers.google.com/speed/webp/  for  addi-
+       tional information.
 
-                               January 25, 2018                    GIF2WEBP(1)
+                               November 4, 2024                    4mGIF2WEBP24m(1)
