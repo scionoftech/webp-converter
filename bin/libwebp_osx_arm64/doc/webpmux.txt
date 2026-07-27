@@ -1,0 +1,219 @@
+4mWEBPMUX24m(1)                  General Commands Manual                 4mWEBPMUX24m(1)
+
+1mNAME0m
+       webpmux - create animated WebP files from non-animated WebP images, ex-
+       tract  frames  from  animated WebP images, and manage XMP/EXIF metadata
+       and ICC profile.
+
+1mSYNOPSIS0m
+       1mwebpmux -get 4m22mGET_OPTIONS24m 4mINPUT24m 1m-o 4m22mOUTPUT0m
+       1mwebpmux -set 4m22mSET_OPTIONS24m 4mINPUT24m 1m-o 4m22mOUTPUT0m
+       1mwebpmux -strip 4m22mSTRIP_OPTIONS24m 4mINPUT24m 1m-o 4m22mOUTPUT0m
+       1mwebpmux -frame 4m22mFRAME_OPTIONS24m 1m[ -frame ... ] [ -loop 4m22mLOOP_COUNT24m 1m]0m
+               1m[ -bgcolor 4m22mBACKGROUND_COLOR24m 1m] -o 4m22mOUTPUT0m
+       1mwebpmux -duration 4m22mDURATION24m 4mOPTIONS24m 1m[ -duration ... ] 4m22mINPUT24m 1m-o 4m22mOUTPUT0m
+       1mwebpmux -info 4m22mINPUT0m
+       1mwebpmux [-h|-help]0m
+       1mwebpmux -version0m
+       1mwebpmux argument_file_name0m
+
+1mDESCRIPTION0m
+       This manual page documents the 1mwebpmux 22mcommand.
+
+       1mwebpmux 22mcan be used to create/extract from animated WebP files, as well
+       as to add/extract/strip XMP/EXIF metadata and ICC profile.  If a single
+       file name (not starting with the character '-') is supplied as the  ar-
+       gument,  the  command  line  arguments are actually tokenized from this
+       file.  This allows for easy scripting or using a large number of  argu-
+       ments.
+
+1mOPTIONS0m
+   1mGET_OPTIONS (-get):0m
+       1micc    22mGet ICC profile.
+
+       1mexif   22mGet EXIF metadata.
+
+       1mxmp    22mGet XMP metadata.
+
+       1mframe 4m22mn0m
+              Get nth frame from an animated image. (n = 0 has a special mean-
+              ing: last frame).
+
+
+   1mSET_OPTIONS (-set)0m
+       1mloop 4m22mloop_count0m
+              Set loop count on an animated file.
+
+       Where: 'loop_count' must be in range [0, 65535].
+
+       1mbgcolor 4m22mA,R,G,B0m
+              Set the background color of the canvas on an animated file.
+
+       where:  'A', 'R', 'G' and 'B' are integers in the range 0 to 255 speci-
+       fying the Alpha, Red, Green and Blue component values respectively.
+
+       1micc 4m22mfile.icc0m
+              Set ICC profile.
+
+       Where: 'file.icc' contains the ICC profile to be set.
+
+       1mexif 4m22mfile.exif0m
+              Set EXIF metadata.
+
+       Where: 'file.exif' contains the EXIF metadata to be set.
+
+       1mxmp 4m22mfile.xmp0m
+              Set XMP metadata.
+
+       Where: 'file.xmp' contains the XMP metadata to be set.
+
+
+   1mSTRIP_OPTIONS (-strip)0m
+       1micc    22mStrip ICC profile.
+
+       1mexif   22mStrip EXIF metadata.
+
+       1mxmp    22mStrip XMP metadata.
+
+
+   1mDURATION_OPTIONS (-duration)0m
+       Amend the duration of a specific interval of  frames.  This  option  is
+       only  effective  on  animated  WebP and has no effect on a single-frame
+       file.
+
+       4mduration[,start[,end]]0m
+              Where:
+              1mduration 22mis  the  duration  for  the  interval  in  milliseconds
+              (mandatory).  Must be non-negative.
+              1mstart 22mis the starting frame index of the interval (optional).
+              1mend  22mis  the ending frame index (inclusive) of the interval (op-
+              tional).
+
+       The three typical usages of this option are:
+              1m-duration d0m
+                   set the duration to 'd' for the whole animation.
+              1m-duration d,f0m
+                   set the duration of frame 'f' to 'd'.
+              1m-duration d,start,end0m
+                   set the duration to 'd' for the whole [start,end] interval.
+
+              Note that the frames outside of the [start, end] interval will
+              remain untouched.
+              The 'end' value '0' has the special meaning 'last frame  of  the
+              animation'.
+
+       4mReminder:0m
+              frame indexing starts at '1'.
+
+
+   1mFRAME_OPTIONS (-frame)0m
+       Create an animated WebP file from multiple (non-animated) WebP images.
+
+       4mfile_i24m 4m+di[+xi+yi[+mi[bi]]]0m
+              Where: 'file_i' is the i'th frame (WebP format), 'xi','yi' spec-
+              ify  the image offset for this frame, 'di' is the pause duration
+              before next frame, 'mi' is the dispose method for this frame  (0
+              for  NONE  or  1 for BACKGROUND) and 'bi' is the blending method
+              for this frame (+b for BLEND or -b for NO_BLEND).  Argument 'bi'
+              can be omitted and will default to +b (BLEND).  Also,  'mi'  can
+              be omitted if 'bi' is omitted and will default to 0 (NONE).  Fi-
+              nally,  if  'mi'  and 'bi' are omitted then 'xi' and 'yi' can be
+              omitted and will default to +0+0.
+
+       1m-loop 4m22mn0m
+              Loop the frames n number of times. 0 indicates the frames should
+              loop forever.  Valid range is 0  to  65535  [Default:  0  (infi-
+              nite)].
+
+       1m-bgcolor 4m22mA,R,G,B0m
+              Background color of the canvas.
+              where:  'A', 'R', 'G' and 'B' are integers in the range 0 to 255
+              specifying the Alpha, Red, Green and Blue component  values  re-
+              spectively [Default: 255,255,255,255].
+
+
+   1mINPUT0m
+       Input file in WebP format.
+
+
+   1mOUTPUT (-o)0m
+       Output file in WebP format.
+
+
+   1mNote:0m
+       The nature of EXIF, XMP and ICC data is not checked and is assumed to
+       be valid.
+
+
+1mEXIT STATUS0m
+       If  there  were  no  problems  during execution, 1mwebpmux 22mexits with the
+       value of the C constant 1mEXIT_SUCCESS22m. This is usually zero.
+
+       If an error occurs, 1mwebpmux 22mexits with the  value  of  the  C  constant
+       1mEXIT_FAILURE22m. This is usually one.
+
+
+1mEXAMPLES0m
+       Add ICC profile:
+       webpmux -set icc image_profile.icc in.webp -o icc_container.webp
+
+       Extract ICC profile:
+       webpmux -get icc icc_container.webp -o image_profile.icc
+
+       Strip ICC profile:
+       webpmux -strip icc icc_container.webp -o without_icc.webp
+
+       Add XMP metadata:
+       webpmux -set xmp image_metadata.xmp in.webp -o xmp_container.webp
+
+       Extract XMP metadata:
+       webpmux -get xmp xmp_container.webp -o image_metadata.xmp
+
+       Strip XMP metadata:
+       webpmux -strip xmp xmp_container.webp -o without_xmp.webp
+
+       Add EXIF metadata:
+       webpmux -set exif image_metadata.exif in.webp -o exif_container.webp
+
+       Extract EXIF metadata:
+       webpmux -get exif exif_container.webp -o image_metadata.exif
+
+       Strip EXIF metadata:
+       webpmux -strip exif exif_container.webp -o without_exif.webp
+
+       Create an animated WebP file from 3 (non-animated) WebP images:
+       webpmux -frame 1.webp +100 -frame 2.webp +100+50+50
+               -frame 3.webp +100+50+50+1+b -loop 10 -bgcolor 255,255,255,255
+               -o anim_container.webp
+
+       Get the 2nd frame from an animated WebP file:
+       webpmux -get frame 2 anim_container.webp -o frame_2.webp
+
+       Using -get/-set/-strip with input file name starting with '-':
+       webpmux -set icc image_profile.icc -o icc_container.webp -- ---in.webp
+       webpmux -get icc -o image_profile.icc -- ---icc_container.webp
+       webpmux -strip icc -o without_icc.webp -- ---icc_container.webp
+
+
+1mAUTHORS0m
+       1mwebpmux 22mis a part of libwebp and was written by the WebP team.
+       The   latest  source  tree  is  available  at  https://chromium.google-
+       source.com/webm/libwebp
+
+       This manual page was written by Vikas  Arora  <vikaas.arora@gmail.com>,
+       for the Debian project (and may be used by others).
+
+
+1mREPORTING BUGS0m
+       Please  report  all  bugs to the issue tracker: https://issues.webmpro-
+       ject.org
+       Patches welcome! See this page  to  get  started:  https://www.webmpro-
+       ject.org/code/contribute/submitting-patches/
+
+
+1mSEE ALSO0m
+       1mcwebp22m(1), 1mdwebp22m(1), 1mgif2webp22m(1)
+       Please  refer  to  https://developers.google.com/speed/webp/  for addi-
+       tional information.
+
+                                 July 18, 2024                      4mWEBPMUX24m(1)

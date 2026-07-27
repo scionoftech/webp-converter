@@ -1,0 +1,105 @@
+4mVWEBP24m(1)                    General Commands Manual                   4mVWEBP24m(1)
+
+1mNAME0m
+       vwebp - decompress a WebP file and display it in a window
+
+1mSYNOPSIS0m
+       1mvwebp 22m[4moptions24m] 4minput_file.webp0m
+
+1mDESCRIPTION0m
+       This manual page documents the 1mvwebp 22mcommand.
+
+       1mvwebp  22mdecompresses  a  WebP  file  and  displays  it in a window using
+       OpenGL.
+
+1mOPTIONS0m
+       1m-h     22mPrint usage summary.
+
+       1m-version0m
+              Print version number and exit.
+
+       1m-noicc 22mDon't use the ICC profile if present.
+
+       1m-nofancy0m
+              Don't use the fancy YUV420 upscaler.
+
+       1m-nofilter0m
+              Disable in-loop filtering.
+
+       1m-dither 4m22mstrength0m
+              Specify a dithering 1mstrength 22mbetween 0 and 100. Dithering  is  a
+              post-processing  effect  applied  to  chroma components in lossy
+              compression.  It helps by smoothing gradients and avoiding band-
+              ing artifacts. Default: 50.
+
+       1m-noalphadither0m
+              By default, quantized transparency planes  are  dithered  during
+              decompression,  to  smooth the gradients. This flag will prevent
+              this dithering.
+
+       1m-usebgcolor0m
+              Fill transparent areas with the bitstream's own background color
+              instead of checkerboard only. Default is white for  non-animated
+              images.
+
+       1m-mt    22mUse multi-threading for decoding, if possible.
+
+       1m-info  22mDisplay image information on top of the decoded image.
+
+       1m-- 4m22mstring0m
+              Explicitly  specify the input file. This option is useful if the
+              input file starts with an '-' for instance. This option must ap-
+              pear 1mlast22m.  Any other options afterward will be ignored. If  the
+              input file is "-", the data will be read from 4mstdin24m instead of a
+              file.
+
+       1mKEYBOARD SHORTCUTS0m
+
+       1m'c'    22mToggle use of color profile.
+
+       1m'b'    22mToggle display of background color.
+
+       1m'i'    22mOverlay file information.
+
+       1m'd'    22mDisable blending and disposal process, for debugging purposes.
+
+       1m'q' / 'Q' / ESC0m
+              Quit.
+
+
+1mEXIT STATUS0m
+       If  there were no problems during execution, 1mvwebp 22mexits with the value
+       of the C constant 1mEXIT_SUCCESS22m. This is usually zero.
+
+       If an error occurs, 1mvwebp 22mexits  with  the  value  of  the  C  constant
+       1mEXIT_FAILURE22m. This is usually one.
+
+
+1mEXAMPLES0m
+       vwebp picture.webp
+       vwebp picture.webp -mt -dither 0
+       vwebp -- ---picture.webp
+
+
+1mAUTHORS0m
+       1mvwebp 22mis a part of libwebp and was written by the WebP team.
+       The   latest  source  tree  is  available  at  https://chromium.google-
+       source.com/webm/libwebp
+
+       This manual page was written for the Debian project (and may be used by
+       others).
+
+
+1mREPORTING BUGS0m
+       Please report all bugs to the  issue  tracker:  https://issues.webmpro-
+       ject.org
+       Patches  welcome!  See  this  page to get started: https://www.webmpro-
+       ject.org/code/contribute/submitting-patches/
+
+
+1mSEE ALSO0m
+       1mdwebp22m(1)
+       Please refer  to  https://developers.google.com/speed/webp/  for  addi-
+       tional information.
+
+                                 July 18, 2024                        4mVWEBP24m(1)

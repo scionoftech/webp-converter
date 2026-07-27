@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Dec 26 17:01:12 2019 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Wed Jul  9 13:53:58 2025 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,10 +24,12 @@
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#OPTIONS">OPTIONS</a><br>
-<a href="#BUGS">BUGS</a><br>
+<a href="#EXIT STATUS">EXIT STATUS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHORS">AUTHORS</a><br>
+<a href="#REPORTING BUGS">REPORTING BUGS</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#Output file format details">Output file format details</a><br>
 
 <hr>
 
@@ -37,7 +39,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">dwebp -
+<p style="margin-left:1%; margin-top: 1em">dwebp -
 decompress a WebP file to an image file</p>
 
 <h2>SYNOPSIS
@@ -45,7 +47,7 @@ decompress a WebP file to an image file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b>
+<p style="margin-left:1%; margin-top: 1em"><b>dwebp</b>
 [<i>options</i>] <i>input_file.webp</i></p>
 
 <h2>DESCRIPTION
@@ -53,52 +55,50 @@ decompress a WebP file to an image file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">This manual
-page documents the <b>dwebp</b> command.</p>
+<p style="margin-left:1%; margin-top: 1em">This manual page
+documents the <b>dwebp</b> command.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b>
-decompresses WebP files into PNG, PAM, PPM or PGM
-images.</p>
+<p style="margin-left:1%; margin-top: 1em"><b>dwebp</b>
+decompresses WebP files into PNG, PAM, PPM or PGM images.
+Note: Animated WebP files are not supported.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The basic
+<p style="margin-left:1%; margin-top: 1em">The basic
 options are:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="3%">
+<td width="1%"></td>
 
 
 <p><b>-h</b></p></td>
-<td width="8%"></td>
-<td width="30%">
+<td width="2%">
 
 
 <p>Print usage summary.</p></td>
-<td width="48%">
+<td width="97%">
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>-version</b></p>
+<p style="margin-left:1%;"><b>-version</b></p>
 
-<p style="margin-left:22%;">Print the version number (as
+<p style="margin-left:1%;">Print the version number (as
 major.minor.revision) and exit.</p>
 
-<p style="margin-left:11%;"><b>-o</b> <i>string</i></p>
+<p style="margin-left:1%;"><b>-o</b> <i>string</i></p>
 
-<p style="margin-left:22%;">Specify the name of the output
+<p style="margin-left:1%;">Specify the name of the output
 file (as PNG format by default). Using &quot;-&quot; as
 output name will direct output to &rsquo;stdout&rsquo;.</p>
 
-<p style="margin-left:11%;"><b>--</b> <i>string</i></p>
+<p style="margin-left:1%;"><b>--</b> <i>string</i></p>
 
-<p style="margin-left:22%;">Explicitly specify the input
+<p style="margin-left:1%;">Explicitly specify the input
 file. This option is useful if the input file starts with an
 &rsquo;-&rsquo; for instance. This option must appear
 <b>last</b>. Any other options afterward will be ignored. If
@@ -108,134 +108,132 @@ the input file is &quot;-&quot;, the data will be read from
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="7%">
+<td width="1%"></td>
 
 
 <p><b>-bmp</b></p></td>
-<td width="4%"></td>
-<td width="78%">
-
-
-<p>Change the output format to uncompressed BMP.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
 <td width="7%">
+
+
+<p>Change the output format to uncompressed BMP.</p></td>
+<td width="92%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="1%"></td>
 
 
 <p><b>-tiff</b></p></td>
-<td width="4%"></td>
-<td width="78%">
-
-
-<p>Change the output format to uncompressed TIFF.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
 <td width="7%">
+
+
+<p>Change the output format to uncompressed TIFF.</p></td>
+<td width="92%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="1%"></td>
 
 
 <p><b>-pam</b></p></td>
-<td width="4%"></td>
-<td width="78%">
-
-
-<p>Change the output format to PAM (retains alpha).</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
 <td width="7%">
+
+
+<p>Change the output format to PAM (retains alpha).</p></td>
+<td width="92%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="1%"></td>
 
 
 <p><b>-ppm</b></p></td>
-<td width="4%"></td>
-<td width="78%">
-
-
-<p>Change the output format to PPM (discards alpha).</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
 <td width="7%">
 
 
+<p>Change the output format to PPM (discards alpha).</p></td>
+<td width="92%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="1%"></td>
+
+
 <p><b>-pgm</b></p></td>
-<td width="4%"></td>
-<td width="78%">
+<td width="7%">
 
 
 <p>Change the output format to PGM. The output consists of
 luma/chroma samples instead of RGB, using the IMC4 layout.
 This option is mainly for verification and debugging
-purposes.</p> </td></tr>
+purposes.</p> </td>
+<td width="92%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="7%">
+<td width="1%"></td>
 
 
 <p><b>-yuv</b></p></td>
-<td width="4%"></td>
-<td width="78%">
+<td width="7%">
 
 
 <p>Change the output format to raw YUV. The output consists
 of luma/chroma-U/chroma-V samples instead of RGB, saved
 sequentially as individual planes. This option is mainly for
-verification and debugging purposes.</p></td></tr>
+verification and debugging purposes.</p></td>
+<td width="92%">
+</td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>-nofancy</b></p>
+<p style="margin-left:1%;"><b>-nofancy</b></p>
 
-<p style="margin-left:22%;">Don&rsquo;t use the fancy
+<p style="margin-left:1%;">Don&rsquo;t use the fancy
 upscaler for YUV420. This may lead to jaggy edges
 (especially the red ones), but should be faster.</p>
 
-<p style="margin-left:11%;"><b>-nofilter</b></p>
+<p style="margin-left:1%;"><b>-nofilter</b></p>
 
-<p style="margin-left:22%;">Don&rsquo;t use the in-loop
+<p style="margin-left:1%;">Don&rsquo;t use the in-loop
 filtering process even if it is required by the bitstream.
 This may produce visible blocks on the non-compliant output,
 but it will make the decoding faster.</p>
 
-<p style="margin-left:11%;"><b>-dither</b>
+<p style="margin-left:1%;"><b>-dither</b>
 <i>strength</i></p>
 
-<p style="margin-left:22%;">Specify a dithering
+<p style="margin-left:1%;">Specify a dithering
 <b>strength</b> between 0 and 100. Dithering is a
 post-processing effect applied to chroma components in lossy
 compression. It helps by smoothing gradients and avoiding
 banding artifacts.</p>
 
-<p style="margin-left:11%;"><b>-alpha_dither</b></p>
+<p style="margin-left:1%;"><b>-alpha_dither</b></p>
 
-<p style="margin-left:22%;">If the compressed file contains
+<p style="margin-left:1%;">If the compressed file contains
 a transparency plane that was quantized during compression,
 this flag will allow dithering the reconstructed plane in
 order to generate smoother transparency gradients.</p>
 
-<p style="margin-left:11%;"><b>-nodither</b></p>
+<p style="margin-left:1%;"><b>-nodither</b></p>
 
-<p style="margin-left:22%;">Disable all dithering
+<p style="margin-left:1%;">Disable all dithering
 (default).</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="4%">
+<td width="1%"></td>
 
 
 <p><b>-mt</b></p></td>
-<td width="7%"></td>
-<td width="70%">
+<td width="5%">
 
 
 <p>Use multi-threading for decoding, if possible.</p></td>
-<td width="8%">
+<td width="94%">
 </td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>-crop</b> <i>x_position
+<p style="margin-left:1%;"><b>-crop</b> <i>x_position
 y_position width height</i></p>
 
-<p style="margin-left:22%;">Crop the decoded picture to a
+<p style="margin-left:1%;">Crop the decoded picture to a
 rectangle with top-left corner at coordinates
 (<b>x_position</b>, <b>y_position</b>) and size <b>width</b>
 x <b>height</b>. This cropping area must be fully contained
@@ -247,23 +245,23 @@ the cropping is applied <i>before</i> any scaling.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="7%">
+<td width="1%"></td>
 
 
 <p><b>-flip</b></p></td>
-<td width="4%"></td>
-<td width="78%">
+<td width="7%">
 
 
 <p>Flip decoded image vertically (can be useful for OpenGL
-textures for instance).</p></td></tr>
+textures for instance).</p></td>
+<td width="92%">
+</td></tr>
 </table>
 
-<p style="margin-left:11%;"><b>-resize</b>, <b>-scale</b>
+<p style="margin-left:1%;"><b>-resize</b>, <b>-scale</b>
 <i>width height</i></p>
 
-<p style="margin-left:22%;">Rescale the decoded picture to
+<p style="margin-left:1%;">Rescale the decoded picture to
 dimension <b>width</b> x <b>height</b>. This option is
 mostly intended to reducing the memory needed to decode
 large images, when only a small version is needed
@@ -275,58 +273,61 @@ will be calculated preserving the aspect-ratio.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
+<td width="1%"></td>
 
 
 <p><b>-quiet</b></p></td>
-<td width="2%"></td>
-<td width="78%">
+<td width="6%">
 
 
-<p>Do not print anything.</p></td></tr>
+<p>Do not print anything.</p></td>
+<td width="93%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
+<td width="1%"></td>
 
 
 <p><b>-v</b></p></td>
-<td width="2%"></td>
-<td width="78%">
+<td width="6%">
 
 
 <p>Print extra information (decoding time in
-particular).</p> </td></tr>
+particular).</p> </td>
+<td width="93%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
+<td width="1%"></td>
 
 
 <p><b>-noasm</b></p></td>
-<td width="2%"></td>
-<td width="78%">
+<td width="6%">
 
 
-<p>Disable all assembly optimizations.</p></td></tr>
+<p>Disable all assembly optimizations.</p></td>
+<td width="93%">
+</td></tr>
 </table>
 
-<h2>BUGS
-<a name="BUGS"></a>
+<h2>EXIT STATUS
+<a name="EXIT STATUS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Please report
-all bugs to the issue tracker:
-https://bugs.chromium.org/p/webp <br>
-Patches welcome! See this page to get started:
-http://www.webmproject.org/code/contribute/submitting-patches/</p>
+<p style="margin-left:1%; margin-top: 1em">If there were no
+problems during execution, <b>dwebp</b> exits with the value
+of the C constant <b>EXIT_SUCCESS</b>. This is usually
+zero.</p>
+
+<p style="margin-left:1%; margin-top: 1em">If an error
+occurs, <b>dwebp</b> exits with the value of the C constant
+<b>EXIT_FAILURE</b>. This is usually one.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">dwebp
+<p style="margin-left:1%; margin-top: 1em">dwebp
 picture.webp -o output.png <br>
 dwebp picture.webp -ppm -o output.ppm <br>
 dwebp -o output.ppm -- ---picture.webp <br>
@@ -337,15 +338,26 @@ cat picture.webp | dwebp -o - -- - &gt; output.ppm</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b> is
+<p style="margin-left:1%; margin-top: 1em"><b>dwebp</b> is
 a part of libwebp and was written by the WebP team. <br>
 The latest source tree is available at
 https://chromium.googlesource.com/webm/libwebp</p>
 
-<p style="margin-left:11%; margin-top: 1em">This manual
-page was written by Pascal Massimino
+<p style="margin-left:1%; margin-top: 1em">This manual page
+was written by Pascal Massimino
 &lt;pascal.massimino@gmail.com&gt;, for the Debian project
 (and may be used by others).</p>
+
+<h2>REPORTING BUGS
+<a name="REPORTING BUGS"></a>
+</h2>
+
+
+<p style="margin-left:1%; margin-top: 1em">Please report
+all bugs to the issue tracker:
+https://issues.webmproject.org <br>
+Patches welcome! See this page to get started:
+https://www.webmproject.org/code/contribute/submitting-patches/</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
@@ -353,14 +365,18 @@ page was written by Pascal Massimino
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>cwebp</b>(1),
+<p style="margin-left:1%; margin-top: 1em"><b>cwebp</b>(1),
 <b>gif2webp</b>(1), <b>webpmux</b>(1) <br>
-Please refer to http://developers.google.com/speed/webp/ for
-additional information.</p>
+Please refer to https://developers.google.com/speed/webp/
+for additional information.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>Output file
-format details</b> <br>
-PAM: http://netpbm.sourceforge.net/doc/pam.html <br>
+<h3>Output file format details
+<a name="Output file format details"></a>
+</h3>
+
+
+<p style="margin-left:1%; margin-top: 1em">PAM:
+http://netpbm.sourceforge.net/doc/pam.html <br>
 PGM: http://netpbm.sourceforge.net/doc/pgm.html <br>
 PPM: http://netpbm.sourceforge.net/doc/ppm.html <br>
 PNG: http://www.libpng.org/pub/png/png-sitemap.html#info</p>
